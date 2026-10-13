@@ -64,7 +64,7 @@ function MainApp() {
         {currentPage === 'paths' && <PathsPage onNavigate={navigate} />}
         {currentPage === 'practice' && <PracticePage onSelectRoom={handleSelectRoom} />}
         {currentPage === 'lab_room' && <LabRoomPage roomId={selectedRoomId} onBack={handleBack} />}
-        {currentPage === 'leaderboard' && <LeaderboardPage />}
+        {currentPage === 'leaderboard' && <LeaderboardPage onNavigate={navigate} />}
         {currentPage === 'security' && <SecurityPage />}
         {currentPage === 'casestudy' && <CaseStudyPage onSelectRoom={handleSelectRoom} />}
         {currentPage === 'partnerships' && <PartnershipsPage />}

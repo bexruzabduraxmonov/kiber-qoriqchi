@@ -64,6 +64,22 @@ export const UserProvider = ({ children }) => {
     localStorage.setItem('cybershield_email', cleanEmail);
     localStorage.setItem('cybershield_logged_in', 'true');
     localStorage.setItem('cybershield_streak', '1');
+
+    try {
+      const players = JSON.parse(localStorage.getItem('cybershield_registered_players') || '[]');
+      const filtered = players.filter(p => p.name !== cleanName && p.handle !== cleanHandle);
+      filtered.push({
+        id: Date.now(),
+        name: cleanName,
+        handle: cleanHandle,
+        flag: '🇺🇿',
+        score: userXp || 0,
+        letter: cleanName.charAt(0).toUpperCase()
+      });
+      localStorage.setItem('cybershield_registered_players', JSON.stringify(filtered));
+    } catch {
+      // ignore localStorage errors
+    }
   };
 
   const loginUser = ({ email, name }) => {
@@ -89,6 +105,24 @@ export const UserProvider = ({ children }) => {
     localStorage.setItem('cybershield_userhandle', finalHandle);
     localStorage.setItem('cybershield_email', cleanEmail);
     localStorage.setItem('cybershield_logged_in', 'true');
+
+    try {
+      const players = JSON.parse(localStorage.getItem('cybershield_registered_players') || '[]');
+      const exists = players.some(p => p.name === finalName);
+      if (!exists) {
+        players.push({
+          id: Date.now(),
+          name: finalName,
+          handle: finalHandle,
+          flag: '🇺🇿',
+          score: userXp || 0,
+          letter: finalName.charAt(0).toUpperCase()
+        });
+        localStorage.setItem('cybershield_registered_players', JSON.stringify(players));
+      }
+    } catch {
+      // ignore
+    }
   };
 
   const logout = () => {

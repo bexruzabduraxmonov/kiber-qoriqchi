@@ -108,6 +108,32 @@ export const HomePage = ({ onNavigate }) => {
 
               <div className="absolute inset-4 top-12 bottom-4 overflow-hidden rounded-[14px] border border-[#223340] bg-[radial-gradient(circle_at_top,_rgba(136,204,20,0.12),_transparent_35%),linear-gradient(180deg,#071118,#0c1820)]">
                 <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'linear-gradient(rgba(136,204,20,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(136,204,20,0.05) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+
+                <div className="absolute inset-0 overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+                    alt="Cybersecurity training"
+                    className="h-full w-full object-cover opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071118] via-[#071118]/35 to-transparent" />
+                </div>
+
+                <div className="absolute left-4 right-4 top-4 rounded-2xl border border-[#2d3d4f] bg-[#0d171f]/80 p-3 backdrop-blur-sm shadow-[0_0_18px_rgba(0,0,0,0.28)]">
+                  <div className="mb-2 flex items-center justify-between text-[10px] font-medium text-[#dfeaf4]">
+                    <span>CyberGuard</span>
+                    <span className="rounded bg-[#88cc14]/15 px-1.5 py-0.5 font-bold text-[#88cc14]">AI</span>
+                  </div>
+                  <div className="space-y-2 text-[9px] text-[#9eb5c9]">
+                    <div className="flex items-center justify-between rounded bg-[#101b26] px-2 py-1.5">
+                      <span>Threat Scan</span>
+                      <span className="text-[#88cc14]">92%</span>
+                    </div>
+                    <div className="flex items-center justify-between rounded bg-[#101b26] px-2 py-1.5">
+                      <span>Firewall</span>
+                      <span className="text-[#0ea5e9]">OK</span>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="absolute inset-x-4 bottom-4 rounded-xl border border-[#2c3f50] bg-[#0d171f]/85 p-3 shadow-[0_0_18px_rgba(0,0,0,0.45)] backdrop-blur-sm">

@@ -185,54 +185,217 @@ export const Navbar = ({ currentPage, onNavigate }) => {
 
   return (
     <>
-    <header className="site-header sticky top-0 z-40 w-full border-b border-[#1d2b34] bg-[#071c2a] shadow-[0_0_20px_rgba(0,0,0,0.25)]">
-      <nav className="mx-auto flex max-w-[1800px] items-center justify-between px-4 py-1 sm:px-8 lg:px-10" aria-label="Main navigation">
-        <div
-          className="flex cursor-pointer items-center gap-2.5 focus:outline-none"
+    <header className="site-header sticky top-0 z-40 w-full shadow-md bg-[#1a232c] border-b border-[#2d3d4f]">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8" aria-label="Main navigation">
+        {/* Logo */}
+        <Logo
+          size="md"
           onClick={() => handleNav('home')}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              handleNav('home');
-            }
-          }}
-        >
-          <div className="relative h-10 w-10 shrink-0">
-            <div className="absolute inset-0 rounded-xl bg-[#9af7d7]/25 blur-lg" />
-            <div className="absolute inset-0 flex items-center justify-center rounded-xl border border-[#62f6c1]/60 bg-[#08141b] shadow-[0_0_16px_rgba(113,245,190,0.35)]">
-              <i className="fa-solid fa-shield-halved text-[16px] text-[#8ef2d6]" />
-            </div>
+          className="focus:outline-none"
+        />
+
+        {/* Desktop Links */}
+        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <button
+            type="button"
+            onClick={() => handleNav('home')}
+            className={`nav-link ${currentPage === 'home' ? 'active' : ''}`}
+          >
+            {t('nav_home')}
+          </button>
+          <button
+            type="button"
+            onClick={() => handleNav('paths')}
+            className={`nav-link ${currentPage === 'paths' ? 'active' : ''}`}
+          >
+            {t('nav_paths')}
+          </button>
+          <button
+            type="button"
+            onClick={() => handleNav('practice')}
+            className={`nav-link ${currentPage === 'practice' || currentPage === 'lab_room' ? 'active' : ''}`}
+          >
+            {t('nav_practice')}
+          </button>
+          <button
+            type="button"
+            onClick={() => handleNav('leaderboard')}
+            className={`nav-link ${currentPage === 'leaderboard' ? 'active' : ''}`}
+          >
+            {t('nav_leaderboard')}
+          </button>
+
+          {/* More Dropdown */}
+          <div className="relative" ref={dropdownRef}>
+            <button
+              type="button"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              onMouseEnter={() => setDropdownOpen(true)}
+              className={`nav-link flex items-center gap-1.5 ${['security', 'casestudy', 'partnerships', 'pitch', 'apk_qoriqchi'].includes(currentPage) ? 'active' : ''}`}
+            >
+              <span>{t('nav_more')}</span>
+              <i className={`fa-solid fa-chevron-down text-xs transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}></i>
+            </button>
+
+            {dropdownOpen && (
+              <ul 
+                onMouseLeave={() => setDropdownOpen(false)}
+                className="absolute left-0 top-full mt-2 w-52 rounded-md bg-[#1a232c] border border-[#2d3d4f] shadow-2xl p-2 z-50 space-y-1 animate-fadeIn"
+              >
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => handleNav('security')}
+                    className="w-full text-left px-3 py-2 rounded text-sm text-[#94a3b8] hover:bg-[#24303c] hover:text-[#0ea5e9] transition-colors"
+                  >
+                    {t('nav_security')}
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => handleNav('casestudy')}
+                    className="w-full text-left px-3 py-2 rounded text-sm text-[#94a3b8] hover:bg-[#24303c] hover:text-[#0ea5e9] transition-colors"
+                  >
+                    {t('nav_casestudy')}
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => handleNav('partnerships')}
+                    className="w-full text-left px-3 py-2 rounded text-sm text-[#94a3b8] hover:bg-[#24303c] hover:text-[#0ea5e9] transition-colors"
+                  >
+                    {t('nav_partners')}
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => handleNav('pitch')}
+                    className={`w-full text-left px-3 py-2 rounded text-sm transition-colors border ${
+                      currentPage === 'pitch'
+                        ? 'border-[#8ef2d6]/40 bg-[#10242d] text-[#8ef2d6]'
+                        : 'border-[#2d4d4f] bg-gradient-to-r from-[#112a2f] to-[#0f2f29] text-[#bfffe5] hover:bg-[#24303c]'
+                    }`}
+                  >
+                    <span className="flex items-center gap-2">
+                      <i className="fa-solid fa-robot text-[11px] text-[#8ef2d6]" />
+                      <span>CyberGuard AI</span>
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => handleNav('apk_qoriqchi')}
+                    className="w-full text-left px-3 py-2 rounded text-sm text-[#94a3b8] hover:bg-[#24303c] hover:text-[#88cc14] transition-colors flex items-center justify-between"
+                  >
+                    <span>APK Qo'riqchi</span>
+                    <span className="text-[10px] bg-[#88cc14]/20 text-[#88cc14] px-1.5 py-0.5 rounded font-mono font-bold">PRO</span>
+                  </button>
+                </li>
+              </ul>
+            )}
           </div>
-          <div className="flex items-baseline text-[2.1rem] font-black leading-none tracking-[-0.07em] text-white">
-            <span>Kiber</span>
-            <span className="text-[#8ef2d6]">Qo'riqchi</span>
+
+          <div className="h-5 w-px bg-[#2d3d4f]"></div>
+
+          {/* Language Switcher */}
+          <div className="lang-switch flex gap-1 font-mono text-xs">
+            {['uz', 'ru', 'en'].map(l => (
+              <button
+                key={l}
+                type="button"
+                onClick={() => setLanguage(l)}
+                className={`px-2 py-1 rounded transition-colors uppercase ${language === l ? 'bg-[#24303c] text-white font-bold border border-[#2d3d4f]' : 'text-[#94a3b8] hover:text-white'}`}
+              >
+                {l}
+              </button>
+            ))}
+          </div>
+
+          {/* Action buttons with THM Streak & XP */}
+          <div className="flex items-center gap-2.5">
+            {isLoggedIn ? (
+              <>
+                {/* Streak & XP pill */}
+                <button
+                  type="button"
+                  onClick={() => handleNav('dashboard')}
+                  title="Sizning yutuqlaringiz"
+                  className="flex items-center gap-2 bg-[#0d151c] border border-[#2d3d4f] hover:border-[#88cc14] rounded-md px-2.5 py-1.5 font-mono text-xs transition-colors"
+                >
+                  <span className="flex items-center gap-1 text-[#f59e0b]">
+                    <i className="fa-solid fa-fire"></i>
+                    <span className="font-bold">{streak}</span>
+                  </span>
+                  <span className="text-[#2d3d4f]">|</span>
+                  <span className="flex items-center gap-1 text-[#88cc14]">
+                    <i className="fa-solid fa-star text-[10px]"></i>
+                    <span className="font-bold">{userXp} XP</span>
+                  </span>
+                </button>
+
+                {/* Profile Pill */}
+                <button
+                  type="button"
+                  onClick={() => handleNav('dashboard')}
+                  className={`flex items-center gap-2 px-3 py-1.5 rounded-md font-mono text-xs transition-all border ${
+                    currentPage === 'dashboard'
+                      ? 'bg-[#88cc14]/15 border-[#88cc14] text-[#88cc14]'
+                      : 'bg-[#24303c] border-[#2d3d4f] text-white hover:border-[#88cc14]'
+                  }`}
+                >
+                  <span className="w-5 h-5 rounded-full bg-gradient-to-br from-[#88cc14] to-[#0ea5e9] text-black font-bold text-[10px] flex items-center justify-center">
+                    {userName ? userName.charAt(0).toUpperCase() : 'U'}
+                  </span>
+                  <span className="font-bold hidden xl:inline">{userName}</span>
+                </button>
+
+                {/* Logout button */}
+                <button
+                  type="button"
+                  onClick={() => { logout(); handleNav('home'); }}
+                  title={language === 'uz' ? 'Chiqish' : language === 'ru' ? 'Выйти' : 'Logout'}
+                  className="btn-outline text-xs py-1.5 px-2.5 border-[#ef4444]/40 text-[#ef4444] hover:bg-[#ef4444] hover:text-white transition-all font-mono"
+                >
+                  <i className="fa-solid fa-arrow-right-from-bracket" />
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  onClick={() => handleNav('dashboard')}
+                  className={`btn-outline text-xs py-1.5 px-3 border-[#2d3d4f] text-[#94a3b8] hover:text-white hover:border-[#0ea5e9] transition-all font-mono ${
+                    currentPage === 'dashboard' ? 'border-[#0ea5e9] text-[#0ea5e9]' : ''
+                  }`}
+                >
+                  {t('nav_dashboard')}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleNav('login', 'login')}
+                  className="btn-outline text-xs py-1.5 px-3 border-[#0ea5e9] text-[#0ea5e9] hover:bg-[#0ea5e9] hover:text-black transition-all font-mono"
+                >
+                  {t('nav_login')}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleNav('login', 'signup')}
+                  className="btn-primary text-xs py-1.5 px-3.5 bg-[#88cc14] text-[#0d151c] hover:bg-[#75b310] font-bold glow-green"
+                >
+                  {language === 'uz' ? "Ro'yxatdan o'tish" : language === 'ru' ? 'Регистрация' : 'Sign Up'}
+                </button>
+              </>
+            )}
           </div>
         </div>
 
-        <div className="hidden lg:flex items-start justify-end gap-11 xl:gap-14">
-          <div className="flex flex-col gap-1 text-left">
-            <div className="text-[9.5px] font-black uppercase tracking-[0.16em] text-[#edf4f8]">Ta'lim</div>
-            <button type="button" onClick={() => handleNav('paths')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Yo'nalishlar</button>
-            <button type="button" onClick={() => handleNav('practice')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Amaliyot</button>
-            <button type="button" onClick={() => handleNav('leaderboard')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Reyting</button>
-          </div>
-
-          <div className="flex flex-col gap-1 text-left">
-            <div className="text-[9.5px] font-black uppercase tracking-[0.16em] text-[#edf4f8]">Kompaniya</div>
-            <button type="button" onClick={() => handleNav('security')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Xavfsizlik</button>
-            <button type="button" onClick={() => handleNav('casestudy')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Holat tahlillari</button>
-            <button type="button" onClick={() => handleNav('partnerships')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Hamkorlik</button>
-          </div>
-
-          <div className="flex flex-col gap-1 text-left">
-            <div className="text-[9.5px] font-black uppercase tracking-[0.16em] text-[#edf4f8]">Akkount</div>
-            <button type="button" onClick={() => handleNav('dashboard')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Profil</button>
-            <button type="button" onClick={() => handleNav('login', 'login')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Kirish</button>
-          </div>
-        </div>
-
+        {/* Mobile Hamburger Button */}
         <button
           type="button"
           onClick={() => setMobileMenuOpen(true)}

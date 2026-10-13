@@ -186,7 +186,7 @@ export const Navbar = ({ currentPage, onNavigate }) => {
   return (
     <>
     <header className="site-header sticky top-0 z-40 w-full border-b border-[#1d2b34] bg-[#071c2a] shadow-[0_0_20px_rgba(0,0,0,0.25)]">
-      <nav className="mx-auto flex max-w-[1800px] items-center justify-between px-4 py-1.5 sm:px-8 lg:px-10" aria-label="Main navigation">
+      <nav className="mx-auto flex max-w-[1800px] items-center justify-between px-4 py-1 sm:px-8 lg:px-10" aria-label="Main navigation">
         <div
           className="flex cursor-pointer items-center gap-2.5 focus:outline-none"
           onClick={() => handleNav('home')}
@@ -199,37 +199,37 @@ export const Navbar = ({ currentPage, onNavigate }) => {
             }
           }}
         >
-          <div className="relative h-11 w-11 shrink-0">
+          <div className="relative h-10 w-10 shrink-0">
             <div className="absolute inset-0 rounded-xl bg-[#9af7d7]/25 blur-lg" />
             <div className="absolute inset-0 flex items-center justify-center rounded-xl border border-[#62f6c1]/60 bg-[#08141b] shadow-[0_0_16px_rgba(113,245,190,0.35)]">
-              <i className="fa-solid fa-shield-halved text-[17px] text-[#8ef2d6]" />
+              <i className="fa-solid fa-shield-halved text-[16px] text-[#8ef2d6]" />
             </div>
           </div>
-          <div className="flex items-baseline text-[2.2rem] font-black leading-none tracking-[-0.07em] text-white">
+          <div className="flex items-baseline text-[2.1rem] font-black leading-none tracking-[-0.07em] text-white">
             <span>Kiber</span>
             <span className="text-[#8ef2d6]">Qo'riqchi</span>
           </div>
         </div>
 
-        <div className="hidden lg:flex items-start justify-end gap-12 xl:gap-16">
-          <div className="flex flex-col gap-1.2 text-left">
-            <div className="text-[10px] font-black uppercase tracking-[0.16em] text-[#edf4f8]">Ta'lim</div>
-            <button type="button" onClick={() => handleNav('paths')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Yo'nalishlar</button>
-            <button type="button" onClick={() => handleNav('practice')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Amaliyot</button>
-            <button type="button" onClick={() => handleNav('leaderboard')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Reyting</button>
+        <div className="hidden lg:flex items-start justify-end gap-11 xl:gap-14">
+          <div className="flex flex-col gap-1 text-left">
+            <div className="text-[9.5px] font-black uppercase tracking-[0.16em] text-[#edf4f8]">Ta'lim</div>
+            <button type="button" onClick={() => handleNav('paths')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Yo'nalishlar</button>
+            <button type="button" onClick={() => handleNav('practice')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Amaliyot</button>
+            <button type="button" onClick={() => handleNav('leaderboard')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Reyting</button>
           </div>
 
-          <div className="flex flex-col gap-1.2 text-left">
-            <div className="text-[10px] font-black uppercase tracking-[0.16em] text-[#edf4f8]">Kompaniya</div>
-            <button type="button" onClick={() => handleNav('security')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Xavfsizlik</button>
-            <button type="button" onClick={() => handleNav('casestudy')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Holat tahlillari</button>
-            <button type="button" onClick={() => handleNav('partnerships')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Hamkorlik</button>
+          <div className="flex flex-col gap-1 text-left">
+            <div className="text-[9.5px] font-black uppercase tracking-[0.16em] text-[#edf4f8]">Kompaniya</div>
+            <button type="button" onClick={() => handleNav('security')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Xavfsizlik</button>
+            <button type="button" onClick={() => handleNav('casestudy')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Holat tahlillari</button>
+            <button type="button" onClick={() => handleNav('partnerships')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Hamkorlik</button>
           </div>
 
-          <div className="flex flex-col gap-1.2 text-left">
-            <div className="text-[10px] font-black uppercase tracking-[0.16em] text-[#edf4f8]">Akkount</div>
-            <button type="button" onClick={() => handleNav('dashboard')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Profil</button>
-            <button type="button" onClick={() => handleNav('login', 'login')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Kirish</button>
+          <div className="flex flex-col gap-1 text-left">
+            <div className="text-[9.5px] font-black uppercase tracking-[0.16em] text-[#edf4f8]">Akkount</div>
+            <button type="button" onClick={() => handleNav('dashboard')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Profil</button>
+            <button type="button" onClick={() => handleNav('login', 'login')} className="text-left text-[0.96rem] leading-[1.3] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Kirish</button>
           </div>
         </div>
 

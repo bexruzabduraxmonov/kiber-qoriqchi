@@ -205,31 +205,31 @@ export const Navbar = ({ currentPage, onNavigate }) => {
               <i className="fa-solid fa-shield-halved text-[17px] text-[#8ef2d6]" />
             </div>
           </div>
-          <div className="flex items-baseline text-[2.45rem] font-black leading-none tracking-[-0.07em] text-white">
+          <div className="flex items-baseline text-[2.2rem] font-black leading-none tracking-[-0.07em] text-white">
             <span>Kiber</span>
             <span className="text-[#8ef2d6]">Qo'riqchi</span>
           </div>
         </div>
 
         <div className="hidden lg:flex items-start justify-end gap-12 xl:gap-16">
-          <div className="flex flex-col gap-1.5 text-left">
-            <div className="text-[10.5px] font-black uppercase tracking-[0.16em] text-[#edf4f8]">Ta'lim</div>
-            <button type="button" onClick={() => handleNav('paths')} className="text-left text-[1rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Yo'nalishlar</button>
-            <button type="button" onClick={() => handleNav('practice')} className="text-left text-[1rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Amaliyot</button>
-            <button type="button" onClick={() => handleNav('leaderboard')} className="text-left text-[1rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Reyting</button>
+          <div className="flex flex-col gap-1.2 text-left">
+            <div className="text-[10px] font-black uppercase tracking-[0.16em] text-[#edf4f8]">Ta'lim</div>
+            <button type="button" onClick={() => handleNav('paths')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Yo'nalishlar</button>
+            <button type="button" onClick={() => handleNav('practice')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Amaliyot</button>
+            <button type="button" onClick={() => handleNav('leaderboard')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Reyting</button>
           </div>
 
-          <div className="flex flex-col gap-1.5 text-left">
-            <div className="text-[10.5px] font-black uppercase tracking-[0.16em] text-[#edf4f8]">Kompaniya</div>
-            <button type="button" onClick={() => handleNav('security')} className="text-left text-[1rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Xavfsizlik</button>
-            <button type="button" onClick={() => handleNav('casestudy')} className="text-left text-[1rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Holat tahlillari</button>
-            <button type="button" onClick={() => handleNav('partnerships')} className="text-left text-[1rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Hamkorlik</button>
+          <div className="flex flex-col gap-1.2 text-left">
+            <div className="text-[10px] font-black uppercase tracking-[0.16em] text-[#edf4f8]">Kompaniya</div>
+            <button type="button" onClick={() => handleNav('security')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Xavfsizlik</button>
+            <button type="button" onClick={() => handleNav('casestudy')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Holat tahlillari</button>
+            <button type="button" onClick={() => handleNav('partnerships')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Hamkorlik</button>
           </div>
 
-          <div className="flex flex-col gap-1.5 text-left">
-            <div className="text-[10.5px] font-black uppercase tracking-[0.16em] text-[#edf4f8]">Akkount</div>
-            <button type="button" onClick={() => handleNav('dashboard')} className="text-left text-[1rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Profil</button>
-            <button type="button" onClick={() => handleNav('login', 'login')} className="text-left text-[1rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Kirish</button>
+          <div className="flex flex-col gap-1.2 text-left">
+            <div className="text-[10px] font-black uppercase tracking-[0.16em] text-[#edf4f8]">Akkount</div>
+            <button type="button" onClick={() => handleNav('dashboard')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Profil</button>
+            <button type="button" onClick={() => handleNav('login', 'login')} className="text-left text-[0.98rem] leading-[1.35] text-[#edf4f8] transition-colors hover:text-[#8ef2d6]">Kirish</button>
           </div>
         </div>
 

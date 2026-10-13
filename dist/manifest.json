@@ -1,0 +1,18 @@
+{
+  "name": "CyberShield | Kiberxavfsizlik Akademiyasi",
+  "short_name": "CyberShield",
+  "description": "Virtual laboratoriyalar, CTF amaliyotlari va APK xavfsizlik monitoringi",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d151c",
+  "theme_color": "#0d151c",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192 512x512 1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

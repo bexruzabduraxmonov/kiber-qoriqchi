@@ -1,0 +1,20 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="badgeGrad" x1="30" y1="20" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A3E635"/>
+      <stop offset="0.5" stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#88CC14"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="20" y="20" width="180" height="180" rx="42" fill="#0B1220" stroke="url(#badgeGrad)" stroke-width="4"/>
+  <path d="M110 46L66 62V101C66 131 82 158 110 171C138 158 154 131 154 101V62L110 46Z" fill="#0E1726" stroke="url(#badgeGrad)" stroke-width="3"/>
+  <path d="M110 68L77 80.5V101C77 120 88 138 110 149C132 138 143 120 143 101V80.5L110 68Z" stroke="#88CC14" stroke-width="2" stroke-dasharray="2 2" opacity="0.8"/>
+  <path d="M82 100H95V110" stroke="#0EA5E9" stroke-width="3" stroke-linecap="round"/>
+  <path d="M138 100H125V110" stroke="#0EA5E9" stroke-width="3" stroke-linecap="round"/>
+  <path d="M110 76V91" stroke="#88CC14" stroke-width="3" stroke-linecap="round"/>
+  <path d="M110 128V145" stroke="#88CC14" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="110,96 126,105 126,121 110,130 94,121 94,105" fill="#111827" stroke="#88CC14" stroke-width="2"/>
+  <circle cx="110" cy="112" r="5" fill="#0EA5E9"/>
+  <circle cx="110" cy="112" r="10" stroke="#0EA5E9" stroke-width="1.5" opacity="0.7"/>
+</svg>

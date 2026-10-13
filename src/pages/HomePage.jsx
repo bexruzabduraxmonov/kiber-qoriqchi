@@ -87,7 +87,7 @@ export const HomePage = ({ onNavigate }) => {
               dangerouslySetInnerHTML={{ __html: t('hero_title') }}
             />
 
-            <p className="mt-4 max-w-[1180px] text-[0.95rem] leading-[1.5] text-[#a7b7c5] lg:text-[1.05rem]">
+            <p className="mt-3 max-w-[1180px] text-[0.88rem] sm:text-[0.95rem] leading-[1.5] text-[#a7b7c5] lg:text-[1rem]">
               {t('hero_desc')}
             </p>
 
@@ -210,7 +210,7 @@ export const HomePage = ({ onNavigate }) => {
                 {language === 'uz' ? 'Nima uchun biz?' : language === 'ru' ? 'Почему мы?' : 'Why Us?'}
               </span>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white font-heading mb-4">
+            <h2 className="text-2xl sm:text-4xl font-bold text-white font-heading mb-3">
               {t('benefits_title')}
             </h2>
             <p className="text-[#94a3b8] max-w-2xl mx-auto">
@@ -241,7 +241,7 @@ export const HomePage = ({ onNavigate }) => {
       <section className="py-24 px-5 sm:px-8 bg-[#1a232c] border-y border-[#2d3d4f]">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white font-heading mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white font-heading mb-3">
               {language === 'uz' ? 'Qanday ishlaydi?' : language === 'ru' ? 'Как это работает?' : 'How it Works'}
             </h2>
           </div>
@@ -296,7 +296,7 @@ export const HomePage = ({ onNavigate }) => {
       <section className="py-24 px-5 sm:px-8 bg-[#1a232c] border-t border-[#2d3d4f]">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold text-white font-heading mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white font-heading mb-3">
               {t('testi_title')}
             </h2>
           </div>

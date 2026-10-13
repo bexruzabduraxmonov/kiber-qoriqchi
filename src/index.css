@@ -340,22 +340,29 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
 
 .hero-heading {
   font-family: var(--font-heading);
-  font-size: clamp(2.3rem, 6.8vw, 5.5rem);
-  line-height: 1.08;
-  letter-spacing: -0.04em;
-  font-weight: 900;
+  font-size: clamp(1.65rem, 4.8vw, 3.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  font-weight: 800;
   max-width: 1180px;
   margin-top: 0.2rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
   text-wrap: balance;
   word-break: break-word;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .hero-heading {
-    font-size: clamp(3.8rem, 5.5vw, 6.8rem);
-    line-height: 0.95;
-    letter-spacing: -0.06em;
+    font-size: clamp(2.3rem, 4.2vw, 4.5rem);
+    line-height: 1.05;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-heading {
+    font-size: clamp(3rem, 4.5vw, 5rem);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
   }
 }
 

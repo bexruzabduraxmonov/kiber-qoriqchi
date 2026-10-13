@@ -121,12 +121,12 @@ export const LeaderboardPage = ({ onNavigate }) => {
 
         {/* ─── Empty State: When Nobody Has Registered Yet ─── */}
         {board.length === 0 ? (
-          <div className="relative overflow-hidden rounded-3xl border border-[#23384d] bg-gradient-to-b from-[#0c1824] via-[#0a131d] to-[#070f17] p-8 sm:p-14 text-center shadow-2xl">
+          <div className="relative overflow-hidden rounded-3xl border border-[#23384d] bg-gradient-to-b from-[#0c1824] via-[#0a131d] to-[#070f17] p-5 sm:p-12 text-center shadow-2xl">
             {/* Ambient Background Circles */}
             <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-64 w-64 rounded-full bg-[#f59e0b]/10 blur-3xl" />
 
             {/* Empty Podium Showcase */}
-            <div className="grid grid-cols-3 gap-3 sm:gap-6 max-w-lg mx-auto mb-10 items-end">
+            <div className="grid grid-cols-3 gap-2 sm:gap-6 max-w-lg mx-auto mb-8 sm:mb-10 items-end">
               {/* 2nd Place Placeholder */}
               <div className="rounded-2xl border border-dashed border-[#2d455d] bg-[#0d1822]/60 p-4 text-center">
                 <div className="mx-auto flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-[#cbd5e1]/40 bg-[#cbd5e1]/10 text-xl text-[#cbd5e1] mb-2">

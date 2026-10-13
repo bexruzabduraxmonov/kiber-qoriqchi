@@ -87,13 +87,32 @@ export const HomePage = ({ onNavigate }) => {
               dangerouslySetInnerHTML={{ __html: t('hero_title') }}
             />
 
-            <p className="mt-5 max-w-[1180px] text-[0.95rem] leading-[1.45] text-[#a7b7c5] lg:text-[1.05rem]">
+            <p className="mt-4 max-w-[1180px] text-[0.95rem] leading-[1.5] text-[#a7b7c5] lg:text-[1.05rem]">
               {t('hero_desc')}
             </p>
+
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={() => onNavigate('login', 'signup')}
+                className="btn-primary text-xs sm:text-sm py-3 px-6 font-bold glow-green"
+              >
+                <i className="fa-solid fa-bolt mr-1" />
+                <span>{language === 'uz' ? "Bepul boshlash" : language === 'ru' ? 'Начать бесплатно' : 'Start Free'}</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => onNavigate('practice')}
+                className="btn-outline text-xs sm:text-sm py-3 px-5 font-mono"
+              >
+                <i className="fa-solid fa-terminal mr-1" />
+                <span>{language === 'uz' ? 'Laboratoriyalar' : language === 'ru' ? 'Лаборатории' : 'Explore Labs'}</span>
+              </button>
+            </div>
           </div>
 
-          <div className="animate-slideRight mt-8 lg:mt-0 flex justify-center lg:justify-end">
-            <div className="dashboard-panel relative h-[490px] w-[420px] overflow-hidden rounded-[22px] border border-[#273948] bg-[#0d151c] shadow-[0_0_40px_rgba(0,0,0,0.38)]">
+          <div className="animate-slideRight mt-8 lg:mt-0 flex justify-center lg:justify-end w-full">
+            <div className="dashboard-panel relative h-[420px] sm:h-[490px] w-full max-w-[420px] overflow-hidden rounded-[22px] border border-[#273948] bg-[#0d151c] shadow-[0_0_40px_rgba(0,0,0,0.38)]">
               <div className="absolute inset-x-0 top-0 flex h-10 items-center justify-between border-b border-[#2a3c4b] bg-[#0b1218]/90 px-3">
                 <div className="flex items-center gap-2">
                   <span className="h-2.5 w-2.5 rounded-full bg-[#ef4444]" />
@@ -158,22 +177,22 @@ export const HomePage = ({ onNavigate }) => {
       </section>
 
       {/* ─── STATS STRIP ─── */}
-      <section className="py-10 px-5 sm:px-8 bg-[#1a232c] border-y border-[#2d3d4f]">
-        <div className="mx-auto max-w-5xl flex flex-wrap justify-around items-center gap-8">
+      <section className="py-8 sm:py-10 px-4 sm:px-8 bg-[#1a232c] border-y border-[#2d3d4f]">
+        <div className="mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
           {[
             { icon: 'fa-users', val: `${(usersCount / 1000).toFixed(0)}k+`, label: t('stat_users'), color: '#88cc14' },
             { icon: 'fa-flask',  val: labsCount,              label: t('stat_labs'),  color: '#0ea5e9' },
             { icon: 'fa-door-open', val: roomsCount,          label: language === 'uz' ? 'Xonalar' : language === 'ru' ? 'Комнаты' : 'Rooms', color: '#f59e0b' },
             { icon: 'fa-signal', val: '24/7',                 label: t('stat_uptime'), color: '#88cc14' },
           ].map((s, i) => (
-            <div key={i} className="flex items-center gap-3 animate-countUp" style={{ animationDelay: `${i * 0.1}s` }}>
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+            <div key={i} className="flex items-center gap-3 animate-countUp p-2 rounded-xl bg-[#0d151c]/40 sm:bg-transparent" style={{ animationDelay: `${i * 0.1}s` }}>
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0"
                 style={{ background: `${s.color}18`, border: `1px solid ${s.color}30` }}>
-                <i className={`fa-solid ${s.icon} text-lg`} style={{ color: s.color }} />
+                <i className={`fa-solid ${s.icon} text-base sm:text-lg`} style={{ color: s.color }} />
               </div>
-              <div>
-                <div className="text-2xl font-bold font-mono" style={{ color: s.color }}>{s.val}</div>
-                <div className="text-xs text-[#94a3b8] uppercase tracking-wider">{s.label}</div>
+              <div className="min-w-0">
+                <div className="text-xl sm:text-2xl font-bold font-mono truncate" style={{ color: s.color }}>{s.val}</div>
+                <div className="text-[10px] sm:text-xs text-[#94a3b8] uppercase tracking-wider truncate">{s.label}</div>
               </div>
             </div>
           ))}
@@ -256,10 +275,10 @@ export const HomePage = ({ onNavigate }) => {
       <section className="py-28 px-5 sm:px-8 bg-[#0d151c] relative overflow-hidden">
         <div className="absolute inset-0 hero-radial pointer-events-none" />
         <div className="relative mx-auto max-w-4xl text-center">
-          <div className="text-6xl sm:text-7xl lg:text-8xl font-bold font-mono mb-4 gradient-text text-glow-green">
+          <div className="text-5xl sm:text-7xl lg:text-8xl font-bold font-mono mb-4 gradient-text text-glow-green">
             {t('stat_banner_num')}
           </div>
-          <p className="text-xl sm:text-2xl text-[#94a3b8] max-w-2xl mx-auto">
+          <p className="text-lg sm:text-2xl text-[#94a3b8] max-w-2xl mx-auto px-4">
             {t('stat_banner_text')}
           </p>
           <button

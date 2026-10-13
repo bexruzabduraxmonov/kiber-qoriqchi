@@ -56,7 +56,7 @@ export const Navbar = ({ currentPage, onNavigate }) => {
         onClick={() => setMobileMenuOpen(false)}
       />
       <div
-        className={`absolute inset-y-0 right-0 flex h-dvh w-full max-w-[420px] flex-col border-l border-[#1a2d39] bg-[#071d28] text-white shadow-[0_0_40px_rgba(0,0,0,0.5)] transition-transform duration-300 ${
+        className={`absolute inset-y-0 right-0 flex h-dvh w-[88vw] max-w-[360px] flex-col border-l border-[#1a2d39] bg-[#071d28] text-white shadow-[0_0_40px_rgba(0,0,0,0.5)] transition-transform duration-300 ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -186,7 +186,7 @@ export const Navbar = ({ currentPage, onNavigate }) => {
   return (
     <>
     <header className="site-header sticky top-0 z-40 w-full shadow-md bg-[#1a232c] border-b border-[#2d3d4f]">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8" aria-label="Main navigation">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-8 sm:py-4" aria-label="Main navigation">
         {/* Logo */}
         <Logo
           size="md"

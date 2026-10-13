@@ -340,14 +340,23 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
 
 .hero-heading {
   font-family: var(--font-heading);
-  font-size: clamp(4.6rem, 6.2vw, 12rem);
-  line-height: 0.74;
-  letter-spacing: -0.08em;
+  font-size: clamp(2.3rem, 6.8vw, 5.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
   font-weight: 900;
   max-width: 1180px;
   margin-top: 0.2rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
   text-wrap: balance;
+  word-break: break-word;
+}
+
+@media (min-width: 1024px) {
+  .hero-heading {
+    font-size: clamp(3.8rem, 5.5vw, 6.8rem);
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+  }
 }
 
 .hero-heading span {

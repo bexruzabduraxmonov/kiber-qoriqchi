@@ -38,7 +38,7 @@ export const DashboardPage = ({ onSelectRoom, onNavigate }) => {
   return (
     <div className="min-h-screen bg-[#070f17] text-[#e2ecf5] pb-20">
       {/* ─── Profile Header / Hero HUD Banner ─── */}
-      <section className="relative overflow-hidden border-b border-[#1b2b3a] bg-gradient-to-b from-[#0e1925] via-[#09141f] to-[#070f17] px-5 py-10 sm:px-8 sm:py-12">
+      <section className="relative overflow-hidden border-b border-[#1b2b3a] bg-gradient-to-b from-[#0e1925] via-[#09141f] to-[#070f17] px-4 py-8 sm:px-8 sm:py-12">
         {/* Ambient glow backgrounds */}
         <div className="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-[#88cc14]/10 blur-3xl" />
         <div className="pointer-events-none absolute -right-20 top-0 h-80 w-80 rounded-full bg-[#0ea5e9]/10 blur-3xl" />
@@ -181,7 +181,7 @@ export const DashboardPage = ({ onSelectRoom, onNavigate }) => {
       </section>
 
       {/* ─── Main Content Container ─── */}
-      <main className="mx-auto max-w-6xl px-5 sm:px-8 py-8 space-y-8">
+      <main className="mx-auto max-w-6xl px-4 sm:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8">
         {/* Guest Banner Notice */}
         {!isLoggedIn && (
           <div className="relative overflow-hidden rounded-2xl border border-[#88cc14]/40 bg-gradient-to-r from-[#0d1d1f] via-[#0b1824] to-[#11221b] p-5 shadow-lg">

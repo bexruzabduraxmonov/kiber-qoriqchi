@@ -6,7 +6,7 @@ import { Logo } from './Logo';
 
 export const Navbar = ({ currentPage, onNavigate }) => {
   const { language, setLanguage, t } = useLanguage();
-  const { isLoggedIn, userName, streak, userXp, logout } = useUser();
+  const { isLoggedIn, userName, logout } = useUser();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -129,7 +129,7 @@ export const Navbar = ({ currentPage, onNavigate }) => {
             </div>
 
             <div className="flex flex-col gap-3">
-              {isLoggedIn ? (
+              {isLoggedIn && userName ? (
                 <>
                   <button
                     type="button"
@@ -138,7 +138,7 @@ export const Navbar = ({ currentPage, onNavigate }) => {
                   >
                     <span className="flex items-center gap-2">
                       <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#8ef2d6] text-[11px] font-black text-[#071821]">
-                        {userName ? userName.charAt(0).toUpperCase() : 'U'}
+                        {userName.charAt(0).toUpperCase()}
                       </span>
                       <span className="font-semibold">{userName}</span>
                     </span>
@@ -201,28 +201,28 @@ export const Navbar = ({ currentPage, onNavigate }) => {
             onClick={() => handleNav('home')}
             className={`nav-link ${currentPage === 'home' ? 'active' : ''}`}
           >
-            Bosh sahifa
+            {language === 'uz' ? 'Bosh sahifa' : language === 'ru' ? 'Главная' : 'Home'}
           </button>
           <button
             type="button"
             onClick={() => handleNav('paths')}
             className={`nav-link ${currentPage === 'paths' ? 'active' : ''}`}
           >
-            Yangiliklar
+            {t('nav_paths')}
           </button>
           <button
             type="button"
             onClick={() => handleNav('practice')}
             className={`nav-link ${currentPage === 'practice' || currentPage === 'lab_room' ? 'active' : ''}`}
           >
-            Amaliyot
+            {t('nav_practice')}
           </button>
           <button
             type="button"
             onClick={() => handleNav('leaderboard')}
             className={`nav-link ${currentPage === 'leaderboard' ? 'active' : ''}`}
           >
-            Reyting
+            {t('nav_leaderboard')}
           </button>
 
           <div className="relative" ref={dropdownRef}>
@@ -232,7 +232,7 @@ export const Navbar = ({ currentPage, onNavigate }) => {
               onMouseEnter={() => setDropdownOpen(true)}
               className={`nav-link flex items-center gap-1.5 ${['security', 'casestudy', 'partnerships', 'pitch', 'apk_qoriqchi'].includes(currentPage) ? 'active' : ''}`}
             >
-              <span>Ko'proq</span>
+              <span>{language === 'uz' ? "Ko'proq" : language === 'ru' ? 'Ещё' : 'More'}</span>
               <i className={`fa-solid fa-chevron-down text-xs transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}></i>
             </button>
 
@@ -300,42 +300,72 @@ export const Navbar = ({ currentPage, onNavigate }) => {
 
           <div className="h-5 w-px bg-[#2d3d4f]"></div>
 
-          <div className="flex items-center gap-1 rounded-lg border border-[#2d3d4f] bg-[#0d151c] p-1 font-mono text-xs">
-            {['uz', 'ru', 'en'].map(l => (
+          {/* Language Switcher - modern flag style */}
+          <div className="flex items-center gap-0.5 rounded-xl bg-[#131e2b] border border-[#253545] p-1">
+            {[
+              { code: 'uz', flag: '🇺🇿', label: 'UZ' },
+              { code: 'ru', flag: '🇷🇺', label: 'RU' },
+              { code: 'en', flag: '🇬🇧', label: 'EN' },
+            ].map(l => (
               <button
-                key={l}
+                key={l.code}
                 type="button"
-                onClick={() => setLanguage(l)}
-                className={`min-w-[38px] rounded-md px-2 py-1 uppercase transition-colors ${language === l ? 'bg-[#24303c] text-white font-bold' : 'text-[#94a3b8] hover:text-white'}`}
+                onClick={() => setLanguage(l.code)}
+                className={`flex items-center gap-1 rounded-lg px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide transition-all duration-200 ${
+                  language === l.code
+                    ? 'bg-[#88cc14] text-[#0d151c] shadow-[0_0_10px_rgba(136,204,20,0.4)]'
+                    : 'text-[#64748b] hover:text-white hover:bg-[#1e2d3d]'
+                }`}
               >
-                {l}
+                <span className="text-[13px] leading-none">{l.flag}</span>
+                <span>{l.label}</span>
               </button>
             ))}
           </div>
 
-          <button
-            type="button"
-            onClick={() => handleNav('dashboard')}
-            className="rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-white hover:border-[#88cc14]"
-          >
-            Profil
-          </button>
-
-          <button
-            type="button"
-            onClick={() => handleNav('login', 'login')}
-            className="rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-white hover:border-[#88cc14]"
-          >
-            {language === 'uz' ? 'Kirish' : language === 'ru' ? 'Войти' : 'Login'}
-          </button>
-
-          <button
-            type="button"
-            onClick={() => handleNav('login', 'signup')}
-            className="rounded-lg bg-[#88cc14] px-3 py-2 text-xs font-black uppercase tracking-[0.08em] text-[#0d151c]"
-          >
-            {language === 'uz' ? "Ro'yxatdan o'tish" : language === 'ru' ? 'Регистрация' : 'Sign Up'}
-          </button>
+          {/* Auth buttons - logged in vs guest */}
+          {isLoggedIn && userName ? (
+            <>
+              <button
+                type="button"
+                onClick={() => handleNav('dashboard')}
+                className="flex items-center gap-2 rounded-xl border border-[#253545] bg-[#131e2b] px-3 py-2 text-xs font-mono text-white hover:border-[#88cc14] hover:shadow-[0_0_12px_rgba(136,204,20,0.2)] transition-all"
+              >
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-[#88cc14] to-[#5fa30d] text-[11px] font-black text-[#0d151c] shadow-sm">
+                  {userName.charAt(0).toUpperCase()}
+                </span>
+                <span className="max-w-[80px] truncate font-semibold">{userName}</span>
+                <i className="fa-solid fa-chevron-down text-[10px] text-[#64748b]" />
+              </button>
+              <button
+                type="button"
+                onClick={() => { logout(); handleNav('home'); }}
+                className="flex items-center gap-1.5 rounded-xl border border-[#ef4444]/25 bg-[#1a0f0f] px-3 py-2 text-xs font-mono text-[#f87171] hover:bg-[#ef4444]/15 hover:border-[#ef4444]/60 transition-all"
+              >
+                <i className="fa-solid fa-arrow-right-from-bracket text-[10px]" />
+                {language === 'uz' ? 'Chiqish' : language === 'ru' ? 'Выйти' : 'Logout'}
+              </button>
+            </>
+          ) : (
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => handleNav('login', 'login')}
+                className="flex items-center gap-1.5 rounded-xl border border-[#253545] bg-[#131e2b] px-4 py-2 text-xs font-bold text-[#94a3b8] hover:border-[#88cc14]/50 hover:text-white transition-all"
+              >
+                <i className="fa-solid fa-arrow-right-to-bracket text-[10px]" />
+                {language === 'uz' ? 'Kirish' : language === 'ru' ? 'Войти' : 'Login'}
+              </button>
+              <button
+                type="button"
+                onClick={() => handleNav('login', 'signup')}
+                className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#88cc14] to-[#6db810] px-4 py-2 text-xs font-black uppercase tracking-wide text-[#0d151c] hover:from-[#9de01a] hover:to-[#88cc14] shadow-[0_0_16px_rgba(136,204,20,0.35)] hover:shadow-[0_0_22px_rgba(136,204,20,0.5)] transition-all"
+              >
+                <i className="fa-solid fa-bolt text-[10px]" />
+                {language === 'uz' ? "Ro'yxatdan o't" : language === 'ru' ? 'Регистрация' : 'Sign Up'}
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Mobile Hamburger Button */}

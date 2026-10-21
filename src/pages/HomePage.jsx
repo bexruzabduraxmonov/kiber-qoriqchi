@@ -201,41 +201,6 @@ export const HomePage = ({ onNavigate }) => {
         </div>
       </section>
 
-      <section className="bg-[#101b26] px-5 py-10 sm:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-6 flex items-center justify-between gap-4">
-            <div>
-              <p className="text-xs font-mono uppercase tracking-[0.18em] text-[#88cc14]">Demo kurslar</p>
-              <h3 className="mt-2 text-2xl font-bold text-white">Savat uchun mahsulotlar</h3>
-            </div>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            {[
-              { id: 'course-beginner', name: 'Cyber Basics', price: 249000 },
-              { id: 'lab-ctf', name: 'CTF Lab Access', price: 179000 },
-              { id: 'bundle-pro', name: 'CyberGuard Pro Bundle', price: 650000 }
-            ].map((product) => (
-              <div key={product.id} className="rounded-2xl border border-[#2d3d4f] bg-[#0d151c] p-5">
-                <div className="mb-3 flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#0ea5e9]">Course</span>
-                  <span className="rounded-full bg-[#88cc14]/15 px-2 py-1 text-xs font-bold text-[#88cc14]">{product.price.toLocaleString('uz-UZ')} UZS</span>
-                </div>
-                <h4 className="text-xl font-bold text-white">{product.name}</h4>
-                <p className="mt-2 text-sm text-[#94a3b8]">Amaliy laboratoriyalar, nazorat savollari va real-world simulyatsiyalar.</p>
-                <button
-                  type="button"
-                  onClick={() => addToCart(product.id, 1, product.name)}
-                  className="mt-4 w-full rounded-lg bg-[#88cc14] px-4 py-2.5 text-sm font-bold text-[#0d151c]"
-                >
-                  Savatga qo'shish
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ─── BENEFITS ─── */}
       <section className="bg-[#0d151c] py-24 px-5 sm:px-8">
         <div className="mx-auto max-w-7xl">

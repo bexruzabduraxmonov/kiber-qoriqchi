@@ -2,11 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { useUser } from '../context/UserContext';
+import { useCart } from '../context/CartContext';
 import { Logo } from './Logo';
 
 export const Navbar = ({ currentPage, onNavigate }) => {
   const { language, setLanguage, t } = useLanguage();
   const { isLoggedIn, userName, streak, userXp, logout } = useUser();
+  const { count, setIsCartOpen } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -300,6 +302,16 @@ export const Navbar = ({ currentPage, onNavigate }) => {
           </div>
 
           <div className="h-5 w-px bg-[#2d3d4f]"></div>
+
+          <button
+            type="button"
+            onClick={() => setIsCartOpen(true)}
+            className="relative flex items-center gap-2 rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-white hover:border-[#88cc14]"
+          >
+            <i className="fa-solid fa-cart-shopping text-[#88cc14]" />
+            <span>Savat</span>
+            <span className="rounded-full bg-[#88cc14] px-1.5 py-0.5 text-[10px] font-bold text-[#0d151c]">{count}</span>
+          </button>
 
           {/* Language Switcher */}
           <div className="lang-switch flex gap-1 font-mono text-xs">

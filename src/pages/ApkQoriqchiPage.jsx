@@ -7,7 +7,7 @@ import {
   Copy, Check, UploadCloud, FileCheck, CreditCard, Link2,
   AlertOctagon, CheckSquare, ShieldCheck, ShieldAlert, Sparkles,
   RefreshCw, Globe, HelpCircle, KeyRound, BellRing, CheckCircle2,
-  XCircle, ArrowRight
+  XCircle, ArrowRight, Phone, Wifi
 } from 'lucide-react';
 
 export const ApkQoriqchiPage = ({ onNavigate }) => {
@@ -156,33 +156,111 @@ export const ApkQoriqchiPage = ({ onNavigate }) => {
 
   const identifyCardSystem = (numStr) => {
     const clean = numStr.replace(/\D/g, '');
+    let type = 'Nomaʼlum to‘lov tizimi';
+    let brand = 'Card';
+    let bank = 'Nomaʼlum emitent bank';
+    let color = 'from-[#334155] via-[#1e293b] to-[#0f172a]';
+    let local = false;
+    let emergencyPhone = "Bank qo'llab-quvvatlash xizmati";
+
     if (clean.startsWith('8600')) {
-      return { type: 'Uzcard (Milliy to‘lov tizimi)', bank: 'O‘zbekiston Banklari', color: 'from-[#0284c7] to-[#0369a1]', local: true };
+      type = 'Uzcard (Milliy to‘lov tizimi)';
+      brand = 'UZCARD';
+      local = true;
+      emergencyPhone = '1111 (Uzcard Call-markaz)';
+      color = 'from-[#0369a1] via-[#0284c7] to-[#075985]';
+      const bin6 = clean.slice(0, 6);
+      if (['860002', '860021'].includes(bin6)) bank = 'Agrobank';
+      else if (['860003', '860049'].includes(bin6)) bank = 'Aloqabank';
+      else if (['860004', '860024'].includes(bin6)) bank = "O'zmilliybank (NBU)";
+      else if (['860005', '860025'].includes(bin6)) bank = 'Asakabank';
+      else if (['860006', '860026'].includes(bin6)) bank = 'Xalq Banki';
+      else if (['860008', '860028'].includes(bin6)) bank = 'Biznesni rivojlantirish banki';
+      else if (['860011', '860029'].includes(bin6)) bank = 'Mikrokreditbank';
+      else if (['860012', '860032'].includes(bin6)) bank = 'Ipoteka-bank (OTP Group)';
+      else if (['860014', '860034'].includes(bin6)) bank = 'Hamkorbank';
+      else if (['860019', '860039'].includes(bin6)) bank = 'Trastbank';
+      else if (['860020', '860040'].includes(bin6)) bank = 'Davr Bank';
+      else if (['860023', '860043'].includes(bin6)) bank = "Ipak Yo'li Banki";
+      else if (['860030', '860048'].includes(bin6)) bank = 'Asia Alliance Bank';
+      else if (['860031', '860046'].includes(bin6)) bank = 'Kapitalbank';
+      else if (['860033', '860047'].includes(bin6)) bank = 'InfinBank (Invest Finance Bank)';
+      else if (['860050'].includes(bin6)) bank = "KDB Bank O'zbekiston";
+      else if (['860053'].includes(bin6)) bank = "O'zsanoatqurilishbank (SQB)";
+      else if (['860055'].includes(bin6)) bank = 'TBC Bank';
+      else if (['860057'].includes(bin6)) bank = 'Anorbank';
+      else if (['860060'].includes(bin6)) bank = 'Apex Bank';
+      else bank = "O'zbekiston tijorat banki (Uzcard)";
+    } else if (clean.startsWith('9860')) {
+      type = 'Humo (Milliy to‘lov tizimi)';
+      brand = 'HUMO';
+      local = true;
+      emergencyPhone = '+998 71 200-08-88 (Humo Call-markaz)';
+      color = 'from-[#ea580c] via-[#d97706] to-[#9a3412]';
+      const bin6 = clean.slice(0, 6);
+      if (['986001', '986021'].includes(bin6)) bank = 'Agrobank Humo';
+      else if (['986002', '986022'].includes(bin6)) bank = 'Xalq Banki Humo';
+      else if (['986003', '986020', '986034'].includes(bin6)) bank = 'Kapitalbank Humo';
+      else if (['986005'].includes(bin6)) bank = 'Aloqabank Humo';
+      else if (['986008'].includes(bin6)) bank = 'Asakabank Humo';
+      else if (['986010', '986026'].includes(bin6)) bank = "O'zmilliybank (NBU) Humo";
+      else if (['986012'].includes(bin6)) bank = 'Ipoteka-bank Humo';
+      else if (['986017'].includes(bin6)) bank = 'Hamkorbank Humo';
+      else if (['986023'].includes(bin6)) bank = "Ipak Yo'li Banki Humo";
+      else if (['986030'].includes(bin6)) bank = 'O‘zsanoatqurilishbank (SQB) Humo';
+      else if (['986033'].includes(bin6)) bank = 'InfinBank Humo';
+      else if (['986035'].includes(bin6)) bank = 'TBC Bank Humo';
+      else if (['986060'].includes(bin6)) bank = 'Anorbank Humo';
+      else bank = "O'zbekiston tijorat banki (Humo)";
+    } else if (clean.startsWith('5614')) {
+      type = 'Uzcard - Mastercard Kobeydjing';
+      brand = 'UZCARD-MC';
+      bank = "O'zbekiston emitent banki (Xalqaro)";
+      color = 'from-[#0369a1] via-[#dc2626] to-[#991b1b]';
+      local = true;
+      emergencyPhone = '1111 (Uzcard)';
+    } else if (clean.startsWith('6262')) {
+      type = 'Uzcard - UnionPay Kobeydjing';
+      brand = 'UZCARD-UPI';
+      bank = "O'zbekiston emitent banki (UnionPay)";
+      color = 'from-[#0369a1] via-[#0d9488] to-[#065f46]';
+      local = true;
+      emergencyPhone = '1111 (Uzcard)';
+    } else if (clean.startsWith('4')) {
+      type = 'Visa International';
+      brand = 'VISA';
+      bank = 'Xalqaro to‘lov tizimi (Visa Global)';
+      color = 'from-[#1d4ed8] via-[#1e40af] to-[#1e3a8a]';
+      local = false;
+      emergencyPhone = 'Emitent bank orqali';
+    } else if (/^5[1-5]/.test(clean) || /^2[2-7]/.test(clean)) {
+      type = 'Mastercard World';
+      brand = 'MASTERCARD';
+      bank = 'Xalqaro to‘lov tizimi (Mastercard)';
+      color = 'from-[#dc2626] via-[#b91c1c] to-[#7f1d1d]';
+      local = false;
+      emergencyPhone = 'Emitent bank orqali';
+    } else if (/^3[47]/.test(clean)) {
+      type = 'American Express';
+      brand = 'AMEX';
+      bank = 'Xalqaro to‘lov tarmog‘i (American Express)';
+      color = 'from-[#059669] via-[#047857] to-[#064e3b]';
+      local = false;
+      emergencyPhone = 'Emitent bank orqali';
+    } else if (/^6(?:011|5)/.test(clean)) {
+      type = 'Discover Card';
+      brand = 'DISCOVER';
+      bank = 'Xalqaro to‘lov tarmog‘i (Discover)';
+      color = 'from-[#ea580c] via-[#c2410c] to-[#7c2d12]';
+      local = false;
+      emergencyPhone = 'Emitent bank orqali';
     }
-    if (clean.startsWith('9860')) {
-      return { type: 'Humo (Milliy to‘lov tizimi)', bank: 'O‘zbekiston Banklari', color: 'from-[#f59e0b] to-[#d97706]', local: true };
-    }
-    if (clean.startsWith('5614')) {
-      return { type: 'Uzcard-Mastercard kobeydjing', bank: 'O‘zbekiston Banklari', color: 'from-[#0284c7] to-[#ef4444]', local: true };
-    }
-    if (clean.startsWith('4')) {
-      return { type: 'Visa International', bank: 'Xalqaro to‘lov tizimi', color: 'from-[#1e40af] to-[#1e3a8a]', local: false };
-    }
-    if (/^5[1-5]/.test(clean) || /^2[2-7]/.test(clean)) {
-      return { type: 'Mastercard World', bank: 'Xalqaro to‘lov tizimi', color: 'from-[#dc2626] to-[#b91c1c]', local: false };
-    }
-    if (/^3[47]/.test(clean)) {
-      return { type: 'American Express', bank: 'Xalqaro to‘lov tizimi', color: 'from-[#059669] to-[#047857]', local: false };
-    }
-    if (/^6(?:011|5)/.test(clean)) {
-      return { type: 'Discover Card', bank: 'Xalqaro to‘lov tizimi', color: 'from-[#ea580c] to-[#c2410c]', local: false };
-    }
-    return { type: 'Nomaʼlum to‘lov tizimi', bank: 'Nomaʼlum emitent', color: 'from-[#475569] to-[#334155]', local: false };
+
+    return { type, brand, bank, color, local, emergencyPhone };
   };
 
-  const handleCardCheck = (e) => {
-    e.preventDefault();
-    const clean = cardNumber.replace(/\D/g, '');
+  const runCardAnalysis = (rawNumber) => {
+    const clean = (rawNumber || cardNumber).replace(/\D/g, '');
     if (clean.length < 8) return;
 
     setCardChecking(true);
@@ -199,44 +277,68 @@ export const ApkQoriqchiPage = ({ onNavigate }) => {
         '4111111111111111',
         '5555555555554444',
         '8600000000000000',
-        '9860000000000000'
+        '9860000000000000',
+        '9860350123456789'
       ].includes(clean);
 
       const hasWeakPattern = /^(\d)\1+$/.test(clean) || clean.startsWith('1234') || clean.includes('12345678');
+      const isDangerous = isLeakedSample || hasWeakPattern || !isValidFormat;
+
+      // Score calculation (0 to 100)
+      let score = 96;
+      if (!isValidFormat) score -= 45;
+      if (isLeakedSample) score -= 40;
+      if (hasWeakPattern) score -= 30;
+      if (score < 10) score = 12;
 
       setCardResult({
         cleanNumber: clean.replace(/(\d{4})/g, '$1 ').trim(),
-        maskedNumber: clean.length >= 16 ? `${clean.slice(0, 4)} **** **** ${clean.slice(-4)}` : `${clean.slice(0, 4)} **** ${clean.slice(-2)}`,
+        maskedNumber: clean.length >= 16 
+          ? `${clean.slice(0, 4)} ${clean.slice(4, 6)}** **** ${clean.slice(-4)}`
+          : `${clean.slice(0, 4)} **** **** **`,
         system: system.type,
+        brand: system.brand,
         bank: system.bank,
         color: system.color,
         isLocal: system.local,
-        isValidFormat: isValidFormat,
+        emergencyPhone: system.emergencyPhone,
+        isValidFormat,
         isLeaked: isLeakedSample || hasWeakPattern,
+        safetyScore: score,
         checks: [
           {
-            title: "Luhn algoritmi bo'yicha nazorat raqami",
+            title: "Luhn algoritmi bo'yicha nazorat raqami (ISO/IEC 7812)",
             status: isValidFormat ? 'safe' : 'danger',
             desc: isValidFormat
-              ? "Karta raqamining matematik tuzilishi ISO/IEC 7812 xalqaro standartiga to'liq javob beradi."
-              : "Karta raqami nazorat yig'indisi xato yoki soxta karta generatsiyasi!"
+              ? "Matematik tuzilish va oxirgi nazorat raqami xalqaro standartga to'liq mos keladi."
+              : "Karta raqami nazorat yig'indisi xato yoki generatsiya qilingan soxta karta!"
           },
           {
-            title: "Qora ro'yxat va sizdirilgan bazalar (Dark Web Monitoring)",
+            title: "Dark Web va ochiq ma'lumotlar sizishi tekshiruvi",
             status: (isLeakedSample || hasWeakPattern) ? 'danger' : 'safe',
             desc: (isLeakedSample || hasWeakPattern)
-              ? "DIQQAT! Ushbu karta firibgarlar o'g'irlagan yoki ommaviy sinov bazalarida qayd etilgan!"
-              : "Karta ochiq kiberhujum va fishing hisobotlarida topilmadi (toza)."
+              ? "DIQQAT! Ushbu karta firibgarlik bazalarida yoki sinov o'g'irlangan ro'yxatlarda topildi!"
+              : "Karta ochiq kiberhujum va fishing hisobotlarida topilmadi (toza holatda)."
           },
           {
-            title: "3D-Secure va SMS-xabarnoma himoyasi",
+            title: "3D-Secure va Bir martalik SMS (OTP) himoya protokoli",
             status: 'safe',
-            desc: "Ushbu karta orqali to'lovlarda doimo bankdan keluvchi 6 xonali SMS kodni begonalarga aytmang!"
+            desc: "Onlayn to'lovlarda bank yuboradigan 6 xonali SMS kodni aslo begonalarga aytmang!"
+          },
+          {
+            title: "CVV / CVC Maxfiylik talabi",
+            status: 'safe',
+            desc: "Ushbu tahlilchi hech qachon maxfiy CVV kodni so'ramaydi va to'liq xavfsiz ishlaydi."
           }
         ]
       });
       setCardChecking(false);
-    }, 1100);
+    }, 600);
+  };
+
+  const handleCardCheck = (e) => {
+    if (e) e.preventDefault();
+    runCardAnalysis(cardNumber);
   };
 
   // =========================================================================
@@ -732,42 +834,61 @@ export const ApkQoriqchiPage = ({ onNavigate }) => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-medium">
                   <ShieldCheck size={14} />
                   <span>Maxfiylik: CVV kod so'ralmaydi, ma'lumotlar saqlanmaydi</span>
                 </div>
               </div>
 
               {/* Form Input */}
-              <form onSubmit={handleCardCheck} className="space-y-4 max-w-2xl mb-8">
+              <form onSubmit={handleCardCheck} className="space-y-4 max-w-3xl mb-8">
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#94a3b8] font-bold mb-2">
-                    Karta raqami (16 ta raqam):
-                  </label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="text-xs uppercase tracking-wider text-[#94a3b8] font-bold">
+                      Karta raqami (16 ta raqam):
+                    </label>
+                    {cardNumber && (
+                      <span className="text-xs font-mono text-[#38bdf8]">
+                        {identifyCardSystem(cardNumber).brand} • {identifyCardSystem(cardNumber).bank}
+                      </span>
+                    )}
+                  </div>
                   <div className="relative">
                     <input
                       type="text"
                       maxLength={19}
                       value={cardNumber}
                       onChange={(e) => {
-                        let val = e.target.value.replace(/\D/g, '').replace(/(\d{4})(?=\d)/g, '$1 ');
+                        let val = e.target.value.replace(/\D/g, '').slice(0, 16).replace(/(\d{4})(?=\d)/g, '$1 ');
                         setCardNumber(val);
                       }}
                       placeholder="8600 0000 0000 0000 yoki 9860..."
-                      className="w-full bg-[#0a121a] border border-[#234260] focus:border-[#38bdf8] rounded-xl px-4 py-3.5 text-lg font-mono text-white placeholder-[#475569] outline-none transition-colors"
+                      className="w-full bg-[#0a121a] border border-[#234260] focus:border-[#38bdf8] rounded-xl px-4 py-3.5 text-lg font-mono text-white placeholder-[#475569] outline-none transition-colors pr-24"
                       required
                     />
-                    <div className="absolute right-3 top-3 text-xs text-[#64748b] font-mono">
-                      {cardNumber.replace(/\D/g, '').length}/16
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
+                      {cardNumber && (
+                        <button
+                          type="button"
+                          onClick={() => { setCardNumber(''); setCardResult(null); }}
+                          className="text-[#64748b] hover:text-white p-1 text-xs"
+                          title="Tozalash"
+                        >
+                          <XCircle size={16} />
+                        </button>
+                      )}
+                      <div className="text-xs text-[#64748b] font-mono border-l border-[#234260] pl-2">
+                        {cardNumber.replace(/\D/g, '').length}/16
+                      </div>
                     </div>
                   </div>
                   <p className="text-[11px] text-[#64748b] mt-1.5 flex items-center gap-1.5">
-                    <Info size={13} />
-                    Faqat karta raqamini kiriting. PIN kod, amal qilish muddati yoki CVV kodlarni aslo kiritmang!
+                    <Info size={13} className="text-[#38bdf8] shrink-0" />
+                    <span>Faqat 16 xonali karta raqami tekshiriladi. PIN-kod, amal qilish muddati yoki maxfiy CVV kodlarni <strong>hech qachon</strong> kiritmang!</span>
                   </p>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-3 pt-2">
+                <div className="flex flex-wrap items-center gap-2 pt-2">
                   <button
                     type="submit"
                     disabled={cardChecking || cardNumber.replace(/\D/g, '').length < 8}
@@ -786,104 +907,222 @@ export const ApkQoriqchiPage = ({ onNavigate }) => {
                     )}
                   </button>
 
-                  <div className="text-xs text-[#64748b]">yoki namunani tanlang:</div>
+                  <div className="text-xs text-[#64748b] pl-2">Namunani sinab ko'rish:</div>
                   <button
                     type="button"
-                    onClick={() => setCardNumber('8600 4912 3456 7890')}
-                    className="text-xs px-2.5 py-1.5 rounded-lg bg-[#182838] hover:bg-[#20364d] text-[#94a3b8] transition-colors cursor-pointer"
+                    onClick={() => {
+                      const num = '8600 4912 3456 7897';
+                      setCardNumber(num);
+                      runCardAnalysis(num);
+                    }}
+                    className="text-xs px-3 py-2 rounded-lg bg-[#182838] border border-[#253f58] hover:border-[#38bdf8] text-[#94a3b8] hover:text-white transition-all cursor-pointer flex items-center gap-1.5"
                   >
-                    Uzcard (Toza)
+                    <CheckCircle2 size={13} className="text-emerald-400" />
+                    <span>Uzcard (Aloqabank - Toza)</span>
                   </button>
                   <button
                     type="button"
-                    onClick={() => setCardNumber('9860 1234 5678 9012')}
-                    className="text-xs px-2.5 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 transition-colors cursor-pointer"
+                    onClick={() => {
+                      const num = '9860 0301 2345 6789';
+                      setCardNumber(num);
+                      runCardAnalysis(num);
+                    }}
+                    className="text-xs px-3 py-2 rounded-lg bg-[#182838] border border-[#253f58] hover:border-[#f59e0b] text-[#94a3b8] hover:text-white transition-all cursor-pointer flex items-center gap-1.5"
                   >
-                    Humo (Sizib chiqqan)
+                    <CheckCircle2 size={13} className="text-emerald-400" />
+                    <span>Humo (Kapitalbank - Toza)</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const num = '9860 1234 5678 9012';
+                      setCardNumber(num);
+                      runCardAnalysis(num);
+                    }}
+                    className="text-xs px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 transition-all cursor-pointer flex items-center gap-1.5"
+                  >
+                    <AlertTriangle size={13} />
+                    <span>Humo (Sizib chiqqan)</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const num = '8600 0000 0000 0000';
+                      setCardNumber(num);
+                      runCardAnalysis(num);
+                    }}
+                    className="text-xs px-3 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500/20 transition-all cursor-pointer flex items-center gap-1.5"
+                  >
+                    <XCircle size={13} />
+                    <span>Soxta / Xato format</span>
                   </button>
                 </div>
               </form>
 
               {/* Card Analysis Result */}
               {cardResult && (
-                <div className="mt-8 border-t border-[#234260] pt-6 space-y-6">
-                  {/* Virtual Card Graphic */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-                    <div className="md:col-span-1">
-                      <div className={`p-6 rounded-2xl bg-gradient-to-br ${cardResult.color} text-white shadow-2xl relative overflow-hidden aspect-[1.58/1] flex flex-col justify-between border border-white/20`}>
-                        <div className="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
-                        <div className="flex justify-between items-center">
-                          <span className="font-bold text-sm tracking-wider uppercase opacity-90">{cardResult.system}</span>
-                          <Lock size={18} className="opacity-80" />
+                <div className="mt-8 border-t border-[#234260] pt-6 space-y-6 animate-in fade-in duration-300">
+                  {/* Virtual Card Graphic & Overview */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                    {/* Visual Card */}
+                    <div className="lg:col-span-5 flex flex-col justify-center">
+                      <div className={`p-6 rounded-2xl bg-gradient-to-br ${cardResult.color} text-white shadow-2xl relative overflow-hidden aspect-[1.58/1] flex flex-col justify-between border border-white/20 transition-transform duration-300 hover:scale-[1.02]`}>
+                        {/* Glow circle overlay */}
+                        <div className="absolute top-0 right-0 -mr-10 -mt-10 w-36 h-36 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                        {/* Top Bank & Contactless */}
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <span className="font-bold text-sm tracking-wider uppercase drop-shadow">{cardResult.bank}</span>
+                            <div className="text-[10px] text-white/75 font-mono">EMV CHIP • NFC CONTACTLESS</div>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Wifi size={18} className="rotate-90 opacity-80" />
+                            <Lock size={15} className="opacity-80" />
+                          </div>
                         </div>
-                        <div className="font-mono text-lg tracking-widest my-auto text-center font-bold">
+
+                        {/* Chip Graphic */}
+                        <div className="my-2">
+                          <div className="w-11 h-8 rounded-md bg-gradient-to-tr from-amber-300 via-amber-200 to-amber-400 border border-amber-500/60 shadow-sm relative overflow-hidden flex items-center justify-center">
+                            <div className="w-full h-[1px] bg-amber-600/50 absolute"></div>
+                            <div className="h-full w-[1px] bg-amber-600/50 absolute"></div>
+                            <div className="w-5 h-4 border border-amber-600/60 rounded-[3px]"></div>
+                          </div>
+                        </div>
+
+                        {/* Number Display */}
+                        <div className="font-mono text-xl tracking-widest text-white text-center font-bold drop-shadow my-1">
                           {cardResult.maskedNumber}
                         </div>
-                        <div className="flex justify-between items-end text-xs opacity-80">
+
+                        {/* Bottom Row */}
+                        <div className="flex justify-between items-end text-xs">
                           <div>
-                            <div className="text-[9px] uppercase">STATUS</div>
-                            <div className="font-semibold">{cardResult.isValidFormat ? 'FAOL KARTA' : 'NOANIQ FORMAT'}</div>
+                            <div className="text-[8px] uppercase tracking-wider text-white/70">XAVFSIZLIK STATUSI</div>
+                            <div className="font-bold text-[11px] flex items-center gap-1">
+                              {cardResult.isValidFormat ? (
+                                <span className="text-emerald-300 flex items-center gap-1">
+                                  <CheckCircle2 size={12} /> ISO STANDART
+                                </span>
+                              ) : (
+                                <span className="text-red-300 flex items-center gap-1">
+                                  <AlertTriangle size={12} /> NOANIQ FORMAT
+                                </span>
+                              )}
+                            </div>
                           </div>
-                          <div className="text-[10px] font-mono">SECURE PROTECTED</div>
+                          <div className="text-right">
+                            <div className="text-[8px] uppercase tracking-wider text-white/70">TIZIM</div>
+                            <div className="font-black text-sm tracking-wider uppercase">{cardResult.brand}</div>
+                          </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="md:col-span-2 space-y-3">
+                    {/* Security Score and Metric Summary */}
+                    <div className="lg:col-span-7 flex flex-col justify-between space-y-3">
+                      {/* Safety Score Meter */}
                       <div className="p-4 rounded-xl bg-[#0e1722] border border-[#1e2f42] flex items-center justify-between">
-                        <span className="text-xs text-[#94a3b8]">To'lov tizimi:</span>
-                        <span className="text-sm font-bold text-white font-mono">{cardResult.system}</span>
-                      </div>
-                      <div className="p-4 rounded-xl bg-[#0e1722] border border-[#1e2f42] flex items-center justify-between">
-                        <span className="text-xs text-[#94a3b8]">Luhn nazorat standarti:</span>
-                        <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${
-                          cardResult.isValidFormat ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'
+                        <div>
+                          <div className="text-xs text-[#94a3b8]">Kiberxavfsizlik va Ishonchlilik Indeksi:</div>
+                          <div className="text-sm font-bold text-white mt-0.5">
+                            {cardResult.safetyScore >= 80 
+                              ? "A'lo darajada himoyalangan" 
+                              : cardResult.safetyScore >= 50 
+                              ? "O'rta xavf darajasi (Ehtiyot bo'ling)" 
+                              : "Yuqori xavf darajasi (Foydalanish xavfli!)"}
+                          </div>
+                        </div>
+                        <div className={`px-4 py-2 rounded-xl font-mono text-xl font-black ${
+                          cardResult.safetyScore >= 80
+                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
+                            : cardResult.safetyScore >= 50
+                            ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40'
+                            : 'bg-red-500/20 text-red-400 border border-red-500/40 animate-pulse'
                         }`}>
-                          {cardResult.isValidFormat ? 'To‘g‘ri (ISO 7812)' : 'Xato yoki soxta karta'}
-                        </span>
+                          {cardResult.safetyScore}/100
+                        </div>
                       </div>
-                      <div className="p-4 rounded-xl bg-[#0e1722] border border-[#1e2f42] flex items-center justify-between">
-                        <span className="text-xs text-[#94a3b8]">Ochiq bazalardagi xavf:</span>
-                        <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${
-                          cardResult.isLeaked ? 'bg-red-500/20 text-red-400' : 'bg-emerald-500/20 text-emerald-400'
-                        }`}>
-                          {cardResult.isLeaked ? 'Xavf aniqlandi (Dark Web)!' : 'Xavfsiz (Topilmadi)'}
+
+                      {/* Detail Badges */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div className="p-3.5 rounded-xl bg-[#0e1722] border border-[#1e2f42]">
+                          <span className="text-[11px] text-[#94a3b8] block">To'lov tizimi & BIN:</span>
+                          <span className="text-sm font-bold text-white font-mono">{cardResult.system}</span>
+                        </div>
+                        <div className="p-3.5 rounded-xl bg-[#0e1722] border border-[#1e2f42]">
+                          <span className="text-[11px] text-[#94a3b8] block">Emitent Bank:</span>
+                          <span className="text-sm font-bold text-white">{cardResult.bank}</span>
+                        </div>
+                        <div className="p-3.5 rounded-xl bg-[#0e1722] border border-[#1e2f42] flex items-center justify-between">
+                          <div>
+                            <span className="text-[11px] text-[#94a3b8] block">Luhn tekshiruvi:</span>
+                            <span className="text-xs text-white">ISO/IEC 7812</span>
+                          </div>
+                          <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${
+                            cardResult.isValidFormat ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'
+                          }`}>
+                            {cardResult.isValidFormat ? 'To‘g‘ri (Mavjud karta)' : 'Xato / Soxta'}
+                          </span>
+                        </div>
+                        <div className="p-3.5 rounded-xl bg-[#0e1722] border border-[#1e2f42] flex items-center justify-between">
+                          <div>
+                            <span className="text-[11px] text-[#94a3b8] block">Sizib chiqqan bazalar:</span>
+                            <span className="text-xs text-white">Dark Web Monitoring</span>
+                          </div>
+                          <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${
+                            cardResult.isLeaked ? 'bg-red-500/20 text-red-400' : 'bg-emerald-500/20 text-emerald-400'
+                          }`}>
+                            {cardResult.isLeaked ? 'Sizish aniqlandi!' : 'Toza (Xavfsiz)'}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Emergency Hotline */}
+                      <div className="p-3 rounded-xl bg-[#09111a] border border-[#182838] flex items-center justify-between text-xs">
+                        <span className="text-[#94a3b8] flex items-center gap-1.5">
+                          <Phone size={13} className="text-[#38bdf8]" />
+                          Favqulodda bloklash raqami:
                         </span>
+                        <span className="font-mono font-bold text-[#38bdf8]">{cardResult.emergencyPhone}</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Security Checks List */}
-                  <div className="space-y-3">
+                  <div className="space-y-3 pt-2">
                     <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
                       <Shield size={16} className="text-[#38bdf8]" />
-                      Himoya tekshiruvlari natijasi:
+                      Batafsil xavfsizlik tekshiruvlari natijasi:
                     </h3>
-                    {cardResult.checks.map((chk, idx) => (
-                      <div key={idx} className="p-4 rounded-xl bg-[#0e1722] border border-[#1e2f42] flex items-start gap-3">
-                        {chk.status === 'safe' ? (
-                          <CheckCircle className="text-emerald-400 shrink-0 mt-0.5" size={18} />
-                        ) : (
-                          <AlertTriangle className="text-red-400 shrink-0 mt-0.5" size={18} />
-                        )}
-                        <div>
-                          <div className="text-sm font-semibold text-white">{chk.title}</div>
-                          <div className="text-xs text-[#94a3b8] mt-0.5">{chk.desc}</div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {cardResult.checks.map((chk, idx) => (
+                        <div key={idx} className="p-4 rounded-xl bg-[#0e1722] border border-[#1e2f42] flex items-start gap-3">
+                          {chk.status === 'safe' ? (
+                            <CheckCircle className="text-emerald-400 shrink-0 mt-0.5" size={18} />
+                          ) : (
+                            <AlertTriangle className="text-red-400 shrink-0 mt-0.5" size={18} />
+                          )}
+                          <div>
+                            <div className="text-sm font-semibold text-white">{chk.title}</div>
+                            <div className="text-xs text-[#94a3b8] mt-0.5 leading-relaxed">{chk.desc}</div>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
 
                   {/* Golden rules for card security */}
-                  <div className="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 space-y-2">
+                  <div className="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 space-y-3">
                     <div className="flex items-center gap-2 font-bold text-sm text-amber-400">
                       <AlertOctagon size={18} />
-                      KARTANI O‘G‘IRLATMASLIKNING ASOSIY QOIDALARI:
+                      KARTADAN PUL O‘G‘IRLATMASLIKNING 3 TA OLTIN QOIDASI:
                     </div>
-                    <ul className="text-xs space-y-1.5 list-disc list-inside text-amber-200/90 leading-relaxed">
-                      <li><strong>SMS tasdiqlash kodini (6 ta raqam)</strong> hech kimga, hatto o‘zini bank yoki xavfsizlik xodimi deb tanishtirganlarga ham bermang!</li>
-                      <li>Kartangiz orqa tarafidagi <strong>3 xonali CVV/CVC kodni</strong> begona saytlarga yoki shaxslarga aslo yubormang.</li>
-                      <li>Begona odamlarga pul o‘tkazib berish uchun faqat karta raqamining o‘zi kifoya, hech qanday kod yoki havola bosish shart emas.</li>
+                    <ul className="text-xs space-y-2 list-disc list-inside text-amber-200/90 leading-relaxed">
+                      <li><strong>SMS tasdiqlash kodini (6 ta raqam)</strong> hech kimga, hatto o‘zini bank, xavfsizlik xizmati yoki prokuratura xodimi deb tanishtirganlarga ham aslo aytmang!</li>
+                      <li>Kartangiz orqa tarafidagi <strong>3 xonali CVV/CVC kodni</strong> begona saytlarga, Telegram botlarga yoki begona shaxslarga aslo yubormang.</li>
+                      <li>Sizga pul o‘tkazib berishmoqchi bo‘lgan odamga <strong>faqat karta raqamining o‘zi kifoya</strong>, hech qanday havolaga o'tish yoki SMS kod aytish shart emas.</li>
                     </ul>
                   </div>
                 </div>

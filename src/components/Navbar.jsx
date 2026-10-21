@@ -300,25 +300,24 @@ export const Navbar = ({ currentPage, onNavigate }) => {
 
           <div className="h-5 w-px bg-[#2d3d4f]"></div>
 
-          {/* Language Switcher - modern flag style */}
-          <div className="flex items-center gap-0.5 rounded-xl bg-[#131e2b] border border-[#253545] p-1">
+          {/* Language Switcher - clean pill style */}
+          <div className="flex items-center rounded-xl bg-[#0d151c] border border-[#253545] p-1 gap-0.5">
             {[
-              { code: 'uz', flag: '🇺🇿', label: 'UZ' },
-              { code: 'ru', flag: '🇷🇺', label: 'RU' },
-              { code: 'en', flag: '🇬🇧', label: 'EN' },
+              { code: 'uz', label: "O'Z" },
+              { code: 'ru', label: 'РУ' },
+              { code: 'en', label: 'EN' },
             ].map(l => (
               <button
                 key={l.code}
                 type="button"
                 onClick={() => setLanguage(l.code)}
-                className={`flex items-center gap-1 rounded-lg px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide transition-all duration-200 ${
+                className={`rounded-lg px-3 py-1.5 text-[11px] font-black uppercase tracking-wider transition-all duration-200 ${
                   language === l.code
-                    ? 'bg-[#88cc14] text-[#0d151c] shadow-[0_0_10px_rgba(136,204,20,0.4)]'
-                    : 'text-[#64748b] hover:text-white hover:bg-[#1e2d3d]'
+                    ? 'bg-[#88cc14] text-[#0d151c] shadow-[0_0_12px_rgba(136,204,20,0.45)]'
+                    : 'text-[#556070] hover:text-[#94a3b8] hover:bg-[#1a2535]'
                 }`}
               >
-                <span className="text-[13px] leading-none">{l.flag}</span>
-                <span>{l.label}</span>
+                {l.label}
               </button>
             ))}
           </div>

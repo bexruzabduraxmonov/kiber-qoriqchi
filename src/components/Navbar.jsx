@@ -203,31 +203,30 @@ export const Navbar = ({ currentPage, onNavigate }) => {
             onClick={() => handleNav('home')}
             className={`nav-link ${currentPage === 'home' ? 'active' : ''}`}
           >
-            {t('nav_home')}
+            Bosh sahifa
           </button>
           <button
             type="button"
             onClick={() => handleNav('paths')}
             className={`nav-link ${currentPage === 'paths' ? 'active' : ''}`}
           >
-            {t('nav_paths')}
+            Yangiliklar
           </button>
           <button
             type="button"
             onClick={() => handleNav('practice')}
             className={`nav-link ${currentPage === 'practice' || currentPage === 'lab_room' ? 'active' : ''}`}
           >
-            {t('nav_practice')}
+            Amaliyot
           </button>
           <button
             type="button"
             onClick={() => handleNav('leaderboard')}
             className={`nav-link ${currentPage === 'leaderboard' ? 'active' : ''}`}
           >
-            {t('nav_leaderboard')}
+            Reyting
           </button>
 
-          {/* More Dropdown */}
           <div className="relative" ref={dropdownRef}>
             <button
               type="button"
@@ -235,7 +234,7 @@ export const Navbar = ({ currentPage, onNavigate }) => {
               onMouseEnter={() => setDropdownOpen(true)}
               className={`nav-link flex items-center gap-1.5 ${['security', 'casestudy', 'partnerships', 'pitch', 'apk_qoriqchi'].includes(currentPage) ? 'active' : ''}`}
             >
-              <span>{t('nav_more')}</span>
+              <span>Ko'proq</span>
               <i className={`fa-solid fa-chevron-down text-xs transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}></i>
             </button>
 
@@ -308,67 +307,47 @@ export const Navbar = ({ currentPage, onNavigate }) => {
             onClick={() => setIsCartOpen(true)}
             className="relative flex items-center gap-2 rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-white transition-colors hover:border-[#88cc14]"
           >
-            <span className="font-bold text-[#88cc14]">Savat</span>
+            <i className="fa-solid fa-cart-shopping text-[#88cc14]" />
+            <span className="font-bold text-white">Savat</span>
             <span className="rounded-full bg-[#88cc14] px-1.5 py-0.5 text-[10px] font-bold text-[#0d151c]">{count}</span>
           </button>
 
-          <div className="lang-switch flex gap-1 font-mono text-xs">
+          <div className="flex items-center gap-1 rounded-lg border border-[#2d3d4f] bg-[#0d151c] p-1 font-mono text-xs">
             {['uz', 'ru', 'en'].map(l => (
               <button
                 key={l}
                 type="button"
                 onClick={() => setLanguage(l)}
-                className={`min-w-[38px] rounded-md border px-2 py-1 uppercase transition-colors ${language === l ? 'border-[#2d3d4f] bg-[#24303c] text-white font-bold' : 'border-transparent text-[#94a3b8] hover:text-white'}`}
+                className={`min-w-[38px] rounded-md px-2 py-1 uppercase transition-colors ${language === l ? 'bg-[#24303c] text-white font-bold' : 'text-[#94a3b8] hover:text-white'}`}
               >
                 {l}
               </button>
             ))}
           </div>
 
-          <div className="flex items-center gap-2.5">
-            {isLoggedIn ? (
-              <>
-                <button
-                  type="button"
-                  onClick={() => handleNav('dashboard')}
-                  className="rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-white hover:border-[#88cc14]"
-                >
-                  {userName || 'Profil'}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => { logout(); handleNav('home'); }}
-                  className="rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-[#94a3b8] hover:text-white"
-                >
-                  {language === 'uz' ? 'Chiqish' : language === 'ru' ? 'Выйти' : 'Logout'}
-                </button>
-              </>
-            ) : (
-              <>
-                <button
-                  type="button"
-                  onClick={() => handleNav('dashboard')}
-                  className="rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-white hover:border-[#88cc14]"
-                >
-                  Profil
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleNav('login', 'login')}
-                  className="rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-white hover:border-[#88cc14]"
-                >
-                  {language === 'uz' ? 'Kirish' : language === 'ru' ? 'Войти' : 'Login'}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleNav('login', 'signup')}
-                  className="rounded-lg bg-[#88cc14] px-3 py-1.5 text-xs font-black uppercase tracking-[0.08em] text-[#0d151c]"
-                >
-                  {language === 'uz' ? "Ro'yxatdan o'tish" : language === 'ru' ? 'Регистрация' : 'Sign Up'}
-                </button>
-              </>
-            )}
-          </div>
+          <button
+            type="button"
+            onClick={() => handleNav('dashboard')}
+            className="rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-white hover:border-[#88cc14]"
+          >
+            Profil
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleNav('login', 'login')}
+            className="rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-white hover:border-[#88cc14]"
+          >
+            {language === 'uz' ? 'Kirish' : language === 'ru' ? 'Войти' : 'Login'}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleNav('login', 'signup')}
+            className="rounded-lg bg-[#88cc14] px-3 py-2 text-xs font-black uppercase tracking-[0.08em] text-[#0d151c]"
+          >
+            {language === 'uz' ? "Ro'yxatdan o'tish" : language === 'ru' ? 'Регистрация' : 'Sign Up'}
+          </button>
         </div>
 
         {/* Mobile Hamburger Button */}

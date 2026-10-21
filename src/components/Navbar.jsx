@@ -302,16 +302,6 @@ export const Navbar = ({ currentPage, onNavigate }) => {
 
           <div className="h-5 w-px bg-[#2d3d4f]"></div>
 
-          <button
-            type="button"
-            onClick={() => setIsCartOpen(true)}
-            className="relative flex items-center gap-2 rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-white transition-colors hover:border-[#88cc14]"
-          >
-            <i className="fa-solid fa-cart-shopping text-[#88cc14]" />
-            <span className="font-bold text-white">Savat</span>
-            <span className="rounded-full bg-[#88cc14] px-1.5 py-0.5 text-[10px] font-bold text-[#0d151c]">{count}</span>
-          </button>
-
           <div className="flex items-center gap-1 rounded-lg border border-[#2d3d4f] bg-[#0d151c] p-1 font-mono text-xs">
             {['uz', 'ru', 'en'].map(l => (
               <button

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { PhoneSecurityPanel } from '../components/PhoneSecurityPanel';
 
 const FEATURES = [
   { id: 1, icon: 'fa-shield-virus',         colorKey: '#0ea5e9', tKey: 'sec_1_t', dKey: 'sec_1_d' },
@@ -8,13 +9,6 @@ const FEATURES = [
   { id: 4, icon: 'fa-mobile-screen-button',  colorKey: '#a855f7', tKey: 'sec_4_t', dKey: 'sec_4_d' },
   { id: 5, icon: 'fa-eye',                   colorKey: '#0ea5e9', tKey: 'sec_5_t', dKey: 'sec_5_d' },
   { id: 6, icon: 'fa-bug-slash',             colorKey: '#88cc14', tKey: 'sec_6_t', dKey: 'sec_6_d' },
-];
-
-const MOBILE_FEATURES = [
-  { icon: 'fa-shield-keyhole', colorKey: '#88cc14', tKey: 'mob_1_t', dKey: 'mob_1_d' },
-  { icon: 'fa-mobile-screen-button', colorKey: '#0ea5e9', tKey: 'mob_2_t', dKey: 'mob_2_d' },
-  { icon: 'fa-user-shield', colorKey: '#a855f7', tKey: 'mob_3_t', dKey: 'mob_3_d' },
-  { icon: 'fa-wifi', colorKey: '#f59e0b', tKey: 'mob_4_t', dKey: 'mob_4_d' },
 ];
 
 export const SecurityPage = () => {
@@ -62,97 +56,7 @@ export const SecurityPage = () => {
           </div>
         </div>
 
-        <div className="mb-12 rounded-2xl border border-[#88cc14]/30 bg-[#1a232c] p-6 sm:p-8 shadow-[0_0_30px_rgba(136,204,20,0.08)]">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between mb-6">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#88cc14]/10 border border-[#88cc14]/30">
-                <i className="fa-solid fa-mobile-screen-button text-xl text-[#88cc14]" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-white">{t('mobile_title')}</h2>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap gap-2 text-xs font-mono">
-              {[
-                { label: 'Threats blocked', value: '4.2k', color: '#88cc14' },
-                { label: 'Secure apps', value: '96%', color: '#0ea5e9' },
-                { label: 'Risk score', value: 'Low', color: '#f59e0b' },
-              ].map((stat, i) => (
-                <div key={i} className="rounded-full border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5">
-                  <span className="text-[#94a3b8]">{stat.label}: </span>
-                  <span style={{ color: stat.color }} className="font-bold">{stat.value}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <p className="text-[#94a3b8] max-w-3xl mb-6">{t('mobile_sub')}</p>
-
-          <div className="grid xl:grid-cols-[1.5fr_0.9fr] gap-5">
-            <div className="grid sm:grid-cols-2 gap-4">
-              {MOBILE_FEATURES.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="group rounded-xl border border-[#2d3d4f] bg-[#0d151c] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-white/10"
-                  style={{ boxShadow: `0 0 0 1px ${item.colorKey}20, 0 8px 24px rgba(0,0,0,0.18)` }}
-                >
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
-                    style={{ background: `${item.colorKey}18`, border: `1px solid ${item.colorKey}30` }}
-                  >
-                    <i className={`fa-solid ${item.icon} text-lg`} style={{ color: item.colorKey }} />
-                  </div>
-                  <h3 className="text-base font-bold text-white mb-2">{t(item.tKey)}</h3>
-                  <p className="text-sm text-[#94a3b8] leading-relaxed">{t(item.dKey)}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="min-h-[360px] rounded-2xl border border-[#2d3d4f] bg-[#0d151c] p-5 shadow-[0_0_24px_rgba(14,165,233,0.08)]">
-              <div className="flex items-center justify-between mb-5">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-[#88cc14]/10 border border-[#88cc14]/30 flex items-center justify-center">
-                    <i className="fa-solid fa-mobile-screen-button text-xl text-[#88cc14]" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] text-[#94a3b8] uppercase tracking-[0.28em]">Device</div>
-                    <div className="text-white font-bold text-[1.15rem]">Samsung A55</div>
-                  </div>
-                </div>
-                <span className="rounded-full border border-[#88cc14]/30 bg-[#88cc14]/10 px-2.5 py-1 text-[10px] font-bold text-[#88cc14]">Protected</span>
-              </div>
-
-              <div className="rounded-2xl bg-gradient-to-br from-[#0f172a] to-[#111827] border border-[#2d3d4f] p-4 mb-5">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-[#94a3b8] text-xs">Overall security</span>
-                  <span className="text-[#88cc14] font-bold font-mono text-lg">92%</span>
-                </div>
-                <div className="h-3 w-full rounded-full bg-[#1b2430] overflow-hidden">
-                  <div className="h-full rounded-full bg-gradient-to-r from-[#88cc14] via-[#22c55e] to-[#0ea5e9]" style={{ width: '92%' }} />
-                </div>
-              </div>
-
-              <div className="space-y-5">
-                {[
-                  { label: 'App monitoring', value: 98 },
-                  { label: 'Password health', value: 88 },
-                  { label: 'Network shield', value: 94 },
-                ].map((bar) => (
-                  <div key={bar.label}>
-                    <div className="flex justify-between text-xs text-[#94a3b8] mb-1.5">
-                      <span>{bar.label}</span>
-                      <span className="font-mono text-white">{bar.value}%</span>
-                    </div>
-                    <div className="h-2.5 rounded-full bg-[#1b2430] overflow-hidden">
-                      <div className="h-full rounded-full bg-gradient-to-r from-[#0ea5e9] to-[#88cc14]" style={{ width: `${bar.value}%` }} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+        <PhoneSecurityPanel />
 
         {/* Feature cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">

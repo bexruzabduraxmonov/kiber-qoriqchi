@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
 import { UserProvider } from './context/UserContext';
 import { Navbar } from './components/Navbar';
@@ -49,6 +49,22 @@ function MainApp() {
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    const applyHash = () => {
+      const hash = (window.location.hash || '').replace(/^#/, '');
+      if (hash === 'phone-scan' || hash === 'security') {
+        if (hash === 'phone-scan') {
+          sessionStorage.setItem('cybershield_autostart_phone_scan', '1');
+        }
+        setCurrentPage('security');
+        setHistoryStack((prev) => (prev[prev.length - 1] === 'security' ? prev : [...prev, 'security']));
+      }
+    };
+    applyHash();
+    window.addEventListener('hashchange', applyHash);
+    return () => window.removeEventListener('hashchange', applyHash);
+  }, []);
 
   const handleSelectRoom = (roomId) => {
     setSelectedRoomId(roomId);

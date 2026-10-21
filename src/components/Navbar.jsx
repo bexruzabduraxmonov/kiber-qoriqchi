@@ -306,73 +306,41 @@ export const Navbar = ({ currentPage, onNavigate }) => {
           <button
             type="button"
             onClick={() => setIsCartOpen(true)}
-            className="relative flex items-center gap-2 rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-white hover:border-[#88cc14]"
+            className="relative flex items-center gap-2 rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-white transition-colors hover:border-[#88cc14]"
           >
-            <i className="fa-solid fa-cart-shopping text-[#88cc14]" />
-            <span>Savat</span>
+            <span className="font-bold text-[#88cc14]">Savat</span>
             <span className="rounded-full bg-[#88cc14] px-1.5 py-0.5 text-[10px] font-bold text-[#0d151c]">{count}</span>
           </button>
 
-          {/* Language Switcher */}
           <div className="lang-switch flex gap-1 font-mono text-xs">
             {['uz', 'ru', 'en'].map(l => (
               <button
                 key={l}
                 type="button"
                 onClick={() => setLanguage(l)}
-                className={`px-2 py-1 rounded transition-colors uppercase ${language === l ? 'bg-[#24303c] text-white font-bold border border-[#2d3d4f]' : 'text-[#94a3b8] hover:text-white'}`}
+                className={`min-w-[38px] rounded-md border px-2 py-1 uppercase transition-colors ${language === l ? 'border-[#2d3d4f] bg-[#24303c] text-white font-bold' : 'border-transparent text-[#94a3b8] hover:text-white'}`}
               >
                 {l}
               </button>
             ))}
           </div>
 
-          {/* Action buttons with THM Streak & XP */}
           <div className="flex items-center gap-2.5">
             {isLoggedIn ? (
               <>
-                {/* Streak & XP pill */}
                 <button
                   type="button"
                   onClick={() => handleNav('dashboard')}
-                  title="Sizning yutuqlaringiz"
-                  className="flex items-center gap-2 bg-[#0d151c] border border-[#2d3d4f] hover:border-[#88cc14] rounded-md px-2.5 py-1.5 font-mono text-xs transition-colors"
+                  className="rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-white hover:border-[#88cc14]"
                 >
-                  <span className="flex items-center gap-1 text-[#f59e0b]">
-                    <i className="fa-solid fa-fire"></i>
-                    <span className="font-bold">{streak}</span>
-                  </span>
-                  <span className="text-[#2d3d4f]">|</span>
-                  <span className="flex items-center gap-1 text-[#88cc14]">
-                    <i className="fa-solid fa-star text-[10px]"></i>
-                    <span className="font-bold">{userXp} XP</span>
-                  </span>
+                  {userName || 'Profil'}
                 </button>
-
-                {/* Profile Pill */}
-                <button
-                  type="button"
-                  onClick={() => handleNav('dashboard')}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-md font-mono text-xs transition-all border ${
-                    currentPage === 'dashboard'
-                      ? 'bg-[#88cc14]/15 border-[#88cc14] text-[#88cc14]'
-                      : 'bg-[#24303c] border-[#2d3d4f] text-white hover:border-[#88cc14]'
-                  }`}
-                >
-                  <span className="w-5 h-5 rounded-full bg-gradient-to-br from-[#88cc14] to-[#0ea5e9] text-black font-bold text-[10px] flex items-center justify-center">
-                    {userName ? userName.charAt(0).toUpperCase() : 'U'}
-                  </span>
-                  <span className="font-bold hidden xl:inline">{userName}</span>
-                </button>
-
-                {/* Logout button */}
                 <button
                   type="button"
                   onClick={() => { logout(); handleNav('home'); }}
-                  title={language === 'uz' ? 'Chiqish' : language === 'ru' ? 'Выйти' : 'Logout'}
-                  className="btn-outline text-xs py-1.5 px-2.5 border-[#ef4444]/40 text-[#ef4444] hover:bg-[#ef4444] hover:text-white transition-all font-mono"
+                  className="rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-[#94a3b8] hover:text-white"
                 >
-                  <i className="fa-solid fa-arrow-right-from-bracket" />
+                  {language === 'uz' ? 'Chiqish' : language === 'ru' ? 'Выйти' : 'Logout'}
                 </button>
               </>
             ) : (
@@ -380,25 +348,21 @@ export const Navbar = ({ currentPage, onNavigate }) => {
                 <button
                   type="button"
                   onClick={() => handleNav('dashboard')}
-                  className={`btn-outline text-xs py-1.5 px-3 border-[#2d3d4f] text-[#94a3b8] hover:text-white hover:border-[#0ea5e9] transition-all font-mono ${
-                    currentPage === 'dashboard' ? 'border-[#0ea5e9] text-[#0ea5e9]' : ''
-                  }`}
+                  className="rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-white hover:border-[#88cc14]"
                 >
-                  {t('nav_dashboard')}
+                  Profil
                 </button>
-
                 <button
                   type="button"
                   onClick={() => handleNav('login', 'login')}
-                  className="btn-outline text-xs py-1.5 px-3 border-[#0ea5e9] text-[#0ea5e9] hover:bg-[#0ea5e9] hover:text-black transition-all font-mono"
+                  className="rounded-lg border border-[#2d3d4f] bg-[#0d151c] px-3 py-1.5 text-xs font-mono text-white hover:border-[#88cc14]"
                 >
-                  {t('nav_login')}
+                  {language === 'uz' ? 'Kirish' : language === 'ru' ? 'Войти' : 'Login'}
                 </button>
-
                 <button
                   type="button"
                   onClick={() => handleNav('login', 'signup')}
-                  className="btn-primary text-xs py-1.5 px-3.5 bg-[#88cc14] text-[#0d151c] hover:bg-[#75b310] font-bold glow-green"
+                  className="rounded-lg bg-[#88cc14] px-3 py-1.5 text-xs font-black uppercase tracking-[0.08em] text-[#0d151c]"
                 >
                   {language === 'uz' ? "Ro'yxatdan o'tish" : language === 'ru' ? 'Регистрация' : 'Sign Up'}
                 </button>

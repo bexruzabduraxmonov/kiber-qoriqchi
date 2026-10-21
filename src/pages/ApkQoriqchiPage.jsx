@@ -686,21 +686,23 @@ export const ApkQoriqchiPage = ({ onNavigate }) => {
 
               {/* Sample Files Selection */}
               <div>
-                <div className="text-xs uppercase tracking-wider text-[#94a3b8] font-bold mb-3">{t.sampleFiles}</div>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="text-xs uppercase tracking-wider text-[#94a3b8] font-bold">{t.sampleFiles}</div>
+                  <span className="text-[11px] text-[#64748b]">Faylni yuklab olib ham tekshirib ko'rishingiz mumkin</span>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {SAMPLES.map(sample => (
-                    <button
+                    <div
                       key={sample.id}
-                      onClick={() => runSampleScan(sample)}
-                      className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
+                      className={`p-4 rounded-xl border transition-all ${
                         selectedSample?.id === sample.id
                           ? 'bg-[#1e344a] border-[#88cc14] ring-2 ring-[#88cc14]/60'
-                          : 'bg-[#101c28] border-[#234260] hover:border-[#38648e] hover:bg-[#162738]'
+                          : 'bg-[#101c28] border-[#234260] hover:border-[#38648e]'
                       }`}
                     >
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-semibold text-white font-mono">{sample.name}</span>
-                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                        <span className="text-sm font-semibold text-white font-mono truncate">{sample.name}</span>
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 ${
                           sample.risk === 'high' ? 'bg-[#ef4444]/20 text-[#ef4444] border border-[#ef4444]/30' :
                           sample.risk === 'medium' ? 'bg-[#f59e0b]/20 text-[#f59e0b] border border-[#f59e0b]/30' :
                           'bg-[#10b981]/20 text-[#10b981] border border-[#10b981]/30'
@@ -710,7 +712,27 @@ export const ApkQoriqchiPage = ({ onNavigate }) => {
                       </div>
                       <div className="text-xs text-[#94a3b8] truncate">{sample.pkg}</div>
                       <div className="text-[11px] text-[#64748b] mt-1">{sample.size} • {sample.threatType}</div>
-                    </button>
+
+                      <div className="flex items-center gap-2 mt-3 pt-3 border-t border-[#1d3246]">
+                        <button
+                          type="button"
+                          onClick={() => runSampleScan(sample)}
+                          className="flex-1 py-1.5 px-2 rounded-lg bg-[#1a2d3f] hover:bg-[#88cc14] hover:text-black text-xs font-bold text-white transition-all text-center flex items-center justify-center gap-1 cursor-pointer"
+                        >
+                          <Eye size={13} />
+                          <span>Tahlil qilish</span>
+                        </button>
+                        <a
+                          href={`/samples/${sample.name}`}
+                          download={sample.name}
+                          className="py-1.5 px-2.5 rounded-lg bg-[#142333] hover:bg-[#0284c7] text-[#38bdf8] hover:text-white border border-[#234260] text-xs font-bold transition-all flex items-center gap-1"
+                          title="Faylni yuklab olish (.apk)"
+                        >
+                          <Download size={13} />
+                          <span>Yuklab olish</span>
+                        </a>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { useCart } from '../context/CartContext';
 
 // Animated counter hook
 function useCounter(target, duration = 2000) {
@@ -49,7 +48,6 @@ const TestimonialCard = ({ letter, name, role, text, delay }) => (
 
 export const HomePage = ({ onNavigate }) => {
   const { language, t } = useLanguage();
-  const { addToCart } = useCart();
   const usersCount = useCounter(96000);
   const labsCount = useCounter(412);
   const roomsCount = useCounter(48);

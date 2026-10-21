@@ -2,13 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { useUser } from '../context/UserContext';
-import { useCart } from '../context/CartContext';
 import { Logo } from './Logo';
 
 export const Navbar = ({ currentPage, onNavigate }) => {
   const { language, setLanguage, t } = useLanguage();
   const { isLoggedIn, userName, streak, userXp, logout } = useUser();
-  const { count, setIsCartOpen } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);

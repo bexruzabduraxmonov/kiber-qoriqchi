@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
 import { UserProvider } from './context/UserContext';
-import { CartProvider } from './context/CartContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { CartPanel } from './components/CartPanel';
 
 // Pages
 import { HomePage } from './pages/HomePage';
@@ -101,10 +99,7 @@ export function App() {
   return (
     <LanguageProvider>
       <UserProvider>
-        <CartProvider>
-          <MainApp />
-          <CartPanel />
-        </CartProvider>
+        <MainApp />
       </UserProvider>
     </LanguageProvider>
   );

@@ -220,7 +220,7 @@
     /* Layout Grids */
     .grid-2 {
       display: grid;
-      grid-template-columns: 1.3fr 1fr;
+      grid-template-columns: 1.2fr 1fr;
       gap: 24px;
       align-items: center;
     }
@@ -229,6 +229,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
+      align-items: start;
     }
 
     .grid-3 {
@@ -382,7 +383,7 @@
       font-weight: 600;
     }
 
-    /* Print styles for exact A4 / 16:9 PDF export */
+    /* Print styles */
     @media print {
       body {
         background: #fff !important;
@@ -434,7 +435,7 @@
       </div>
       <div>
         <div class="brand-title">Kiber<span>Qoriqchi</span></div>
-        <div class="brand-sub">Haqiqiy Sayt Screenshotlari Bilan Professional Taqdimot</div>
+        <div class="brand-sub">Haqiqiy Sayt Screenshotlari Bilan Professional Taqdimot (12 ta Slayd)</div>
       </div>
     </div>
 
@@ -465,12 +466,12 @@
       <div class="grid-2">
         <div>
           <h1 class="slide-title" style="font-size: 38px;">KiberQoriqchi</h1>
-          <p class="slide-sub" style="font-size: 17px; line-height: 1.6;">
+          <p class="slide-sub" style="font-size: 16px; line-height: 1.6;">
             Raqamli O‘zbekistonni kiber-xavflardan himoya qiluvchi, kibergigiyena va amaliy kiberxavfsizlik ko‘nikmalarini o‘rgatuvchi zamonaviy milliy web-platforma.
           </p>
           <div class="callout-list" style="margin-bottom: 20px;">
             <li><i class="fa-solid fa-globe" style="color:var(--cyan);"></i> <span><strong>Rasmiy sayt:</strong> https://kiber-xavfsizlik-boyicha-sayt.vercel.app/</span></li>
-            <li><i class="fa-solid fa-check" style="color:var(--green);"></i> <span><strong>Tizim turi:</strong> Interaktiv kiber-akademiya, virtual laboratoriyalar va jonli tahlil asboblari</span></li>
+            <li><i class="fa-solid fa-check" style="color:var(--green);"></i> <span><strong>Tizim:</strong> Interaktiv kiber-akademiya, virtual laboratoriyalar va jonli tahlil asboblari</span></li>
             <li><i class="fa-solid fa-language" style="color:var(--green);"></i> <span><strong>Til qamrovi:</strong> O‘zbek, Rus va Ingliz tillarida to‘liq lokalizatsiya</span></li>
           </div>
         </div>
@@ -494,7 +495,7 @@
       <p class="slide-sub">Raqamli hayotimizda har kuni yuz berayotgan real kiber-tahdidlar va ularga qarshi milliy yechim</p>
       
       <div class="grid-equal">
-        <div class="card-item" style="border-color: rgba(239,68,68,0.4);">
+        <div class="card-item">
           <div class="card-item-title" style="color: var(--danger);">
             <i class="fa-solid fa-triangle-exclamation" style="color: var(--danger);"></i>
             Mavjud 3 ta Asosiy Muammo
@@ -504,14 +505,12 @@
           <p><strong>3. Amaliyotning yo‘qligi:</strong> Mavjud ma'lumotlar faqat quruq nazariyadan iborat yoki xorijiy tillarda.</p>
         </div>
 
-        <div class="card-item" style="border-color: rgba(16,185,129,0.5);">
-          <div class="card-item-title" style="color: var(--green);">
-            <i class="fa-solid fa-circle-check" style="color: var(--green);"></i>
-            KiberQoriqchi Platformasi Yechimi
+        <div class="img-box">
+          <img src="/screenshots/03_paths.png" alt="KiberQoriqchi Yo'nalishlari">
+          <div class="img-caption">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Haqiqiy platforma yechimi — tizimli, amaliy va 100% ona tilimizdagi darslar</span>
           </div>
-          <p><strong>1. 100% Ona tilimizda:</strong> Har qanday darajadagi foydalanuvchiga sodda va tushunarli tilda o‘rgatadi.</p>
-          <p><strong>2. Virtual Laboratoriyalar:</strong> Shunchaki o‘qish emas — brauzerda real kiber-zaifliklarni bartaraf etish amaliyoti.</p>
-          <p><strong>3. Jonli Himoya Asboblari:</strong> Telegram APK fayllari va smartfon xavfsizligini 1-klikda tekshirish imkoniyati.</p>
         </div>
       </div>
     </article>
@@ -530,7 +529,7 @@
           <img src="/screenshots/01_home_hero.png" alt="KiberQoriqchi Bosh Sahifasi Katta">
           <div class="img-caption">
             <i class="fa-solid fa-arrow-pointer"></i>
-            <span>Saytning asosiy harakatga undovchi tugmalari va qorong‘i neon kiber mavzusi</span>
+            <span>Bosh sahifaning to‘liq interfeysi — neon kiber dizayn va qulay navigatsiya</span>
           </div>
         </div>
         <div class="callout-list">
@@ -558,7 +557,7 @@
           <li>
             <i class="fa-solid fa-user-shield" style="color:var(--amber);"></i>
             <div>
-              <strong>4. Gamifikatsiya va Ballar:</strong>
+              <strong>4. Profil va Ballar:</strong>
               <div>Foydalanuvchining login holati va to‘plangan ballari saqlanuvchi shaxsiy boshqaruv paneli.</div>
             </div>
           </li>
@@ -610,45 +609,22 @@
         <div class="slide-num">SLAYD 05</div>
       </div>
       <h2 class="slide-title">Kiberxavfsizlik Bo‘limlari va Mavzulari</h2>
-      <p class="slide-sub">Saytda o‘rgatiladigan asosiy kiber-yo‘nalishlar va ularning amaliy vazifalari</p>
+      <p class="slide-sub">Saytda o‘rgatiladigan asosiy kiber-yo‘nalishlar va laboratoriyalar haqiqiy rasmlari</p>
 
-      <div class="grid-2">
+      <div class="grid-equal">
         <div class="img-box">
           <img src="/screenshots/03_paths.png" alt="Yo'nalishlar Sahifasi">
           <div class="img-caption">
             <i class="fa-solid fa-layer-group"></i>
-            <span>"Yo‘nalishlar" sahifasi — boshlang‘ichdan professionalgacha bo‘lgan darslar</span>
+            <span>"Yo‘nalishlar" — Kibergigiyena, Web xavfsizlik, Linux darslari</span>
           </div>
         </div>
-        <div class="callout-list">
-          <li>
-            <i class="fa-solid fa-shield" style="color:var(--green);"></i>
-            <div>
-              <strong>Boshlang‘ich Kibergigiyena:</strong>
-              <div>Parollarni mustahkamlash, 2FA yoqish, fishing xabarlarni aniqlash va xavfsiz internet qoidalari.</div>
-            </div>
-          </li>
-          <li>
-            <i class="fa-solid fa-bug" style="color:var(--cyan);"></i>
-            <div>
-              <strong>Web Xavfsizlik (OWASP Top 10):</strong>
-              <div>SQL Injection, XSS, CSRF va autentifikatsiya zaifliklarini tushunish va bartaraf etish.</div>
-            </div>
-          </li>
-          <li>
-            <i class="fa-solid fa-network-wired" style="color:var(--green);"></i>
-            <div>
-              <strong>Tarmoq va Server Himoyasi:</strong>
-              <div>Firewall sozlash, portlarni skanerlash, VPN shifrlash va Linux server xavfsizligi.</div>
-            </div>
-          </li>
-          <li>
-            <i class="fa-solid fa-user-ninja" style="color:var(--amber);"></i>
-            <div>
-              <strong>Penetration Testing (CTF):</strong>
-              <div>Axloqiy xakkerlik (Ethical Hacking) usullari va tizimlardagi tirqishlarni topish.</div>
-            </div>
-          </li>
+        <div class="img-box">
+          <img src="/screenshots/11_practice_rooms.png" alt="Amaliyot Xonalari">
+          <div class="img-caption">
+            <i class="fa-solid fa-flask"></i>
+            <span>"Amaliyot" — Virtual CTF xonalari va zaiflik laboratoriyalari</span>
+          </div>
         </div>
       </div>
     </article>
@@ -702,36 +678,44 @@
       <h2 class="slide-title">Sayt Qanday Ishlaydi? (Bosqichma-bosqich Jarayon)</h2>
       <p class="slide-sub">Foydalanuvchi platformadan foydalanishda bosib o‘tadigan 4 ta asosiy qadam</p>
 
-      <div class="grid-4">
-        <div class="card-item" style="border-top: 4px solid var(--green);">
-          <div style="font-size: 28px; font-weight: 900; color: var(--green);">01</div>
-          <div class="card-item-title">Saytga Kirish</div>
-          <p>Brauzer orqali platformani ochadi, tilni tanlaydi va o‘z qiziqishiga mos yo‘nalishni belgilaydi.</p>
+      <div class="grid-2">
+        <div class="img-box">
+          <img src="/screenshots/09_lab_room.png" alt="Laboratoriya Xonasi">
+          <div class="img-caption">
+            <i class="fa-solid fa-laptop-code"></i>
+            <span>Haqiqiy virtual laboratoriya xonasi — amaliy mashqlar va bayroq (flag) kiritish paneli</span>
+          </div>
         </div>
-
-        <div class="card-item" style="border-top: 4px solid var(--cyan);">
-          <div style="font-size: 28px; font-weight: 900; color: var(--cyan);">02</div>
-          <div class="card-item-title">Mavzuni O‘rganish</div>
-          <p>Kiber-tushunchalar, real hayotiy misollar va infografikalar yordamida bilim oladi.</p>
+        <div class="callout-list">
+          <li>
+            <strong style="font-size:18px;">01</strong>
+            <div>
+              <strong>Saytga Kirish:</strong>
+              <div>Platformaga ulanish, tilni sozlash va qiziqishga mos yo‘nalishni tanlash.</div>
+            </div>
+          </li>
+          <li>
+            <strong style="font-size:18px;">02</strong>
+            <div>
+              <strong>Mavzuni O‘rganish:</strong>
+              <div>Kiber-tushunchalar, infografikalar va real misollar bilan nazariyani egallash.</div>
+            </div>
+          </li>
+          <li>
+            <strong style="font-size:18px;">03</strong>
+            <div>
+              <strong>Virtual Laboratoriya:</strong>
+              <div>Brauzer qumlog‘ida zaifliklarni bartaraf etish va ballar to‘plash.</div>
+            </div>
+          </li>
+          <li>
+            <strong style="font-size:18px;">04</strong>
+            <div>
+              <strong>Real Himoya:</strong>
+              <div>Smartfon yoki APK fayllarni skaner qilib, xavfsizlikni ta'minlash.</div>
+            </div>
+          </li>
         </div>
-
-        <div class="card-item" style="border-top: 4px solid var(--amber);">
-          <div style="font-size: 28px; font-weight: 900; color: var(--amber);">03</div>
-          <div class="card-item-title">Virtual Laboratoriya</div>
-          <p>Brauzer qumlog‘ida (sandbox) topshiriqlarni bajaradi va maxfiy bayroq (flag) topib ball yig‘adi.</p>
-        </div>
-
-        <div class="card-item" style="border-top: 4px solid var(--green);">
-          <div style="font-size: 28px; font-weight: 900; color: var(--green);">04</div>
-          <div class="card-item-title">Real Himoya</div>
-          <p>O‘z smartfoni va fayllarini skaner qilib, xavfsizlik madaniyatini kundalik odatga aylantiradi.</p>
-        </div>
-      </div>
-
-      <div class="card-item" style="margin-top: 20px; background: rgba(16,185,129,0.06); border-color: rgba(16,185,129,0.3);">
-        <p style="font-size: 14.5px; color: #fff; text-align: center;">
-          ⚡ <strong>Natija:</strong> Foydalanuvchi shunchaki "o‘qidim" emas, balki <em>"xavfni tanidim → bartaraf etdim → himoyalandim"</em> darajasiga yetadi.
-        </p>
       </div>
     </article>
 
@@ -744,42 +728,46 @@
       <h2 class="slide-title">Texnologiyalar: Loyihaning Haqiqiy Texnik Asosi</h2>
       <p class="slide-sub">Faqat kod bazasi (package.json va arxitektura) orqali 100% aniqlangan haqiqiy texnologiyalar</p>
 
-      <table class="spec-table">
-        <thead>
-          <tr>
-            <th>Qatlam</th>
-            <th>Texnologiya</th>
-            <th>Vazifasi va Afzalligi</th>
-            <th>Holati</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Frontend Asosi</strong></td>
-            <td class="active-col">React 18 & Vite</td>
-            <td>Zamonaviy Single Page Application (SPA), modulli komponentlar va soniyalik render tezligi.</td>
-            <td><span style="color:var(--green); font-weight:700;">✔ Integratsiya qilingan</span></td>
-          </tr>
-          <tr>
-            <td><strong>Stil va Dizayn</strong></td>
-            <td class="active-col">Tailwind CSS & PostCSS</td>
-            <td>To‘liq moslashuvchan (responsive) qorong‘i kiber-dizayn va yengil CSS hajmi.</td>
-            <td><span style="color:var(--green); font-weight:700;">✔ Integratsiya qilingan</span></td>
-          </tr>
-          <tr>
-            <td><strong>UI & Gamifikatsiya</strong></td>
-            <td class="active-col">Lucide Icons & Canvas Confetti</td>
-            <td>Zamonaviy kiber-ikonkalar to‘plami va laboratoriyalarni yechganda qutlovchi animatsiyalar.</td>
-            <td><span style="color:var(--green); font-weight:700;">✔ Integratsiya qilingan</span></td>
-          </tr>
-          <tr>
-            <td><strong>Infratuzilma</strong></td>
-            <td class="active-col">Vercel Edge Cloud</td>
-            <td>Global CDN, avtomatlashtirilgan CI/CD va 24/7 uzluksiz HTTPS xavfsizligi.</td>
-            <td><span style="color:var(--green); font-weight:700;">✔ Jonli ishlamoqda</span></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="grid-2">
+        <div class="img-box">
+          <img src="/screenshots/08_cyberguard_ai.png" alt="CyberGuard AI">
+          <div class="img-caption">
+            <i class="fa-solid fa-robot"></i>
+            <span>CyberGuard AI — o‘zbek tilidagi kiberxavfsizlik sun'iy intellekti</span>
+          </div>
+        </div>
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Qatlam</th>
+              <th>Texnologiya</th>
+              <th>Vazifasi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Frontend</strong></td>
+              <td class="active-col">React 18 & Vite</td>
+              <td>Tezkor SPA arxitekturasi va soniyalik render.</td>
+            </tr>
+            <tr>
+              <td><strong>Dizayn</strong></td>
+              <td class="active-col">Tailwind CSS</td>
+              <td>To‘liq moslashuvchan qorong‘i kiber-interfeys.</td>
+            </tr>
+            <tr>
+              <td><strong>UI & Effekt</strong></td>
+              <td class="active-col">Lucide & Confetti</td>
+              <td>Vektorli ikonlar va gamifikatsiya nishonlari.</td>
+            </tr>
+            <tr>
+              <td><strong>Bulut</strong></td>
+              <td class="active-col">Vercel Edge Cloud</td>
+              <td>Global CDN va 24/7 uzluksiz HTTPS xizmati.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </article>
 
     <!-- ── SLIDE 9: Afzalliklari ───────────────────────────────────── -->
@@ -791,25 +779,36 @@
       <h2 class="slide-title">Afzalliklari: KiberQoriqchi Nega Boshqalardan Ustun?</h2>
       <p class="slide-sub">Saytning haqiqiy imkoniyatlariga asoslangan asosiy raqobat ustunliklari</p>
 
-      <div class="grid-equal">
-        <div class="card-item">
-          <div class="card-item-title"><i class="fa-solid fa-flag"></i> 100% Ona Tilimizda va Mahalliy Kontekst</div>
-          <p>O‘zbekiston to‘lov tizimlari (Click, Payme, Uzcard, Humo) orqali qilinadigan fishinglarga qarshi maxsus ko‘nikmalar beriladi.</p>
+      <div class="grid-2">
+        <div class="img-box">
+          <img src="/screenshots/07_leaderboard.png" alt="Leaderboard Reyting">
+          <div class="img-caption">
+            <i class="fa-solid fa-trophy"></i>
+            <span>"Leaderboard" — jonli reyting jadvali va yutuqlar tizimi</span>
+          </div>
         </div>
-
-        <div class="card-item">
-          <div class="card-item-title"><i class="fa-solid fa-shield-halved"></i> Ta'lim va Real Himoya Birlashgan</div>
-          <p>Faqatgina ma'ruza tinglash emas — foydalanuvchi o‘z telefonidagi zaifliklarni yoki fayllarni saytda darhol tekshira oladi.</p>
-        </div>
-
-        <div class="card-item">
-          <div class="card-item-title"><i class="fa-solid fa-gamepad"></i> O‘yinlashtirilgan Kiber-Musobaqa (CTF)</div>
-          <p>Har bir laboratoriya topshirig‘i uchun XP ballar va reyting tizimi mavjud bo‘lib, o‘rganuvchilar o‘rtasida sog‘lom raqobat yaratadi.</p>
-        </div>
-
-        <div class="card-item">
-          <div class="card-item-title"><i class="fa-solid fa-robot"></i> Sun'iy Intellekt Maslahatchisi</div>
-          <p>CyberGuard AI assistenti murakkab xavfsizlik tushunchalarini har qanday foydalanuvchiga 24/7 sodda qilib tushuntirib beradi.</p>
+        <div class="callout-list">
+          <li>
+            <i class="fa-solid fa-flag" style="color:var(--green);"></i>
+            <div>
+              <strong>100% Ona Tilimizda:</strong>
+              <div>O‘zbekiston to‘lov tizimlari (Click, Payme, Uzcard) xavflariga to‘liq moslashtirilgan.</div>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-shield-halved" style="color:var(--cyan);"></i>
+            <div>
+              <strong>Ta'lim + Real Himoya:</strong>
+              <div>Nazariya bilan birga smartfon va APK fayllarni jonli tekshiruvchi qurollar bor.</div>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-gamepad" style="color:var(--amber);"></i>
+            <div>
+              <strong>Gamifikatsiya (CTF):</strong>
+              <div>Topshiriqlarni bajarish orqali ballar to‘plab musobaqa ruhi shakllantiriladi.</div>
+            </div>
+          </li>
         </div>
       </div>
     </article>
@@ -823,25 +822,29 @@
       <h2 class="slide-title">Kamchiliklar va Kelajakdagi Rivojlantirish Yo‘nalishlari</h2>
       <p class="slide-sub">Loyiha holatini ochiq va xolis baholash hamda uni kengaytirish rejalari</p>
 
-      <div class="grid-equal">
-        <div class="card-item" style="border-color: rgba(245,158,11,0.5);">
-          <div class="card-item-title" style="color: var(--amber);">
-            <i class="fa-solid fa-circle-exclamation" style="color: var(--amber);"></i>
-            Aniqlangan Kamchiliklar (MVP bosqichi)
+      <div class="grid-2">
+        <div class="img-box">
+          <img src="/screenshots/12_casestudy.png" alt="Case Study Hodisalar">
+          <div class="img-caption">
+            <i class="fa-solid fa-file-waveform"></i>
+            <span>"Hodisalar Tahlili" (Case Study) — real kiber-hujumlar tahlili</span>
           </div>
-          <p><strong>1. Dinamik Server Konteynerlari:</strong> Hozirda laboratoriyalar veb-simulyatsiya asosida; kelgusida to‘liq server-side Docker konteynerlari ulanishi kerak.</p>
-          <p><strong>2. Mobil Ilova Mavjud Emas:</strong> Platforma veb-versiyada ajoyib ishlaydi, lekin mahalliy Android/iOS ilovasi talab qilinadi.</p>
-          <p><strong>3. Telegram Bot Integratsiyasi:</strong> Telegramdan kelgan fayllarni avtomatik tekshiruvchi bot hali to‘liq ishga tushirilmagan.</p>
         </div>
-
-        <div class="card-item" style="border-color: rgba(16,185,129,0.5);">
-          <div class="card-item-title" style="color: var(--green);">
-            <i class="fa-solid fa-rocket" style="color: var(--green);"></i>
-            Kelajakdagi Rivojlantirish Rejalari
-          </div>
-          <p><strong>1. Telegram Kiber-Bot:</strong> Shubhali fayl yoki havolani yuborib 2 soniyada tahlil natijasini oluvchi Telegram boti.</p>
-          <p><strong>2. B2B Korporativ Audit:</strong> Banklar va tashkilotlar uchun xodimlar kibergigiyenasi auditi va fishing simulyatsiyalari.</p>
-          <p><strong>3. Respublika CTF Musobaqalari:</strong> Universitet va maktab talabalari uchun rasmiy sovrinli kiberxavfsizlik olimpiadalari.</p>
+        <div class="callout-list">
+          <li style="border-color: rgba(245,158,11,0.5);">
+            <i class="fa-solid fa-triangle-exclamation" style="color:var(--amber);"></i>
+            <div>
+              <strong>Hozirgi Kamchiliklar (MVP):</strong>
+              <div>Laboratoriyalar hozircha veb-simulyatsiya asosida; mobil ilova (Android/iOS) va Telegram bot hali to‘liq integratsiya qilinmoqda.</div>
+            </div>
+          </li>
+          <li style="border-color: rgba(16,185,129,0.5);">
+            <i class="fa-solid fa-rocket" style="color:var(--green);"></i>
+            <div>
+              <strong>Kelgusi Rejalar:</strong>
+              <div>Telegram tahlil boti, B2B korporativ audit va respublika talabalari o‘rtasida kiberxavfsizlik musobaqalarini o‘tkazish.</div>
+            </div>
+          </li>
         </div>
       </div>
     </article>
@@ -855,25 +858,28 @@
       <h2 class="slide-title">Xulosa: Loyiha Natijasi va Jamiyatga Foydasi</h2>
       <p class="slide-sub">Kiberxavfsizlik — bu shunchaki texnologiya emas, balki ongli odatlar va madaniyatdir</p>
 
-      <div class="grid-3" style="margin-bottom: 24px;">
-        <div class="card-item" style="text-align: center;">
-          <div style="font-size: 34px; font-weight: 900; color: var(--green);">32M+</div>
-          <p>Smartfon egalari uchun o‘zbek tilidagi birinchi xavfsizlik ta'limi va tahlil platformasi.</p>
+      <div class="grid-2">
+        <div class="img-box">
+          <img src="/screenshots/10_login.png" alt="Login Shaxsiy Kabinet">
+          <div class="img-caption">
+            <i class="fa-solid fa-id-card"></i>
+            <span>Ro‘yxatdan o‘tish va foydalanuvchining shaxsiy kabinet interfeysi</span>
+          </div>
         </div>
-        <div class="card-item" style="text-align: center;">
-          <div style="font-size: 34px; font-weight: 900; color: var(--cyan);">1-Click</div>
-          <p>Murakkab sozlamalarsiz, telefon va APK xavfsizligini tekshirishning eng qulay mexanizmi.</p>
+        <div class="callout-list">
+          <li>
+            <strong style="font-size:22px; color:var(--green);">32M+</strong>
+            <div>Aholi uchun o‘zbek tilidagi birinchi kiber-ta'lim va tahlil platformasi.</div>
+          </li>
+          <li>
+            <strong style="font-size:22px; color:var(--cyan);">1-Click</strong>
+            <div>Smartfon va APK xavfsizligini tekshirishning eng qulay milliy vositasi.</div>
+          </li>
+          <li>
+            <strong style="font-size:22px; color:var(--amber);">100%</strong>
+            <div>Ona tilimizda yangi avlod kiber-mutaxassislarini tayyorlash poydevori.</div>
+          </li>
         </div>
-        <div class="card-item" style="text-align: center;">
-          <div style="font-size: 34px; font-weight: 900; color: var(--amber);">100%</div>
-          <p>Ona tilimizda yangi avlod kiber-mutaxassislari va axloqiy xakkerlarni tayyorlash poydevori.</p>
-        </div>
-      </div>
-
-      <div class="card-item" style="background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.4); text-align: center; padding: 24px;">
-        <p style="font-size: 16px; color: #fff; font-weight: 600; line-height: 1.6;">
-          «KiberQoriqchi — Raqamli O‘zbekistonni kiberjinoyatchilikdan asrashga va xalqimizning moddiy hamda shaxsiy ma'lumotlarini himoya qilishga xizmat qiladi!»
-        </p>
       </div>
     </article>
 

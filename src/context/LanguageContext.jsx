@@ -5,7 +5,7 @@ const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguageState] = useState(() => {
-    return localStorage.getItem('cybershield_lang') || 'ru';
+    return localStorage.getItem('cybershield_lang') || 'uz';
   });
 
   const setLanguage = (lang) => {

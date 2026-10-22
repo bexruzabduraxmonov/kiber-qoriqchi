@@ -5,7 +5,7 @@ import fs from 'fs';
 const pres = new pptxgen();
 pres.layout = 'LAYOUT_16x9'; // 10 x 5.625 inches
 pres.title = 'KiberQoriqchi — Web Platformasi Prezentatsiyasi';
-pres.author = 'KiberQoriqchi';
+pres.author = 'Abduraxmonov Bexruz';
 pres.company = 'CyberShield Academy';
 
 // Theme Colors
@@ -32,6 +32,8 @@ const C = {
 const IMG_DIR = path.resolve('public', 'screenshots');
 const getImg = (name) => path.join(IMG_DIR, name);
 
+const TOTAL_SLIDES = 13;
+
 // Helper for Slide Header
 function addHeader(slide, num, title, subtitle, isDark = false) {
   slide.addShape(pres.shapes.ROUNDED_RECTANGLE, {
@@ -39,7 +41,7 @@ function addHeader(slide, num, title, subtitle, isDark = false) {
     fill: { color: isDark ? '064E3B' : 'ECFDF5' },
     line: { color: C.green, width: 1 }
   });
-  slide.addText(`SLAYD ${num} / 12`, {
+  slide.addText(`SLAYD ${num} / ${TOTAL_SLIDES}`, {
     x: 0.6, y: 0.25, w: 2.2, h: 0.3,
     fontSize: 9.5, bold: true, color: isDark ? '34D399' : C.greenDark, align: 'center', valign: 'middle'
   });
@@ -117,7 +119,7 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
     x: 0.75, y: 2.75, w: 4.3, h: 0.75
   });
 
-  s.addText('✔ 100% O‘zbek tilida   ✔ Jonli Laboratoriyalar   ✔ APK Skaneri', {
+  s.addText('Muallif: Abduraxmonov Bexruz   |   100% O‘zbek tilida', {
     x: 0.6, y: 3.75, w: 4.6, h: 0.35,
     fontSize: 11, bold: true, color: C.green
   });
@@ -133,7 +135,6 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
   s.background = { color: C.bgLight };
   addHeader(s, '02', 'Loyiha haqida: Muammo va Yechim', 'Nega KiberQoriqchi platformasi yaratildi va qanday real muammolarni hal qiladi?');
 
-  // Left side: Text explanation
   s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
     x: 0.6, y: 1.45, w: 4.2, h: 3.8, r: 0.15,
     fill: { color: C.cardLight },
@@ -154,7 +155,6 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
     lineSpacingMultiple: 1.1
   });
 
-  // Right side: Real screenshot of Paths/Education
   addScreenshot(s, '03_paths.png', 5.1, 1.45, 4.3, 3.5, '📸 KiberQoriqchi — tizimli ta\'lim yo\'nalishlari interfeysi');
 }
 
@@ -201,7 +201,6 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
   s.background = { color: C.bgLight };
   addHeader(s, '04', 'Sayt menyusi: Haqiqiy navigatsiya tuzilishi', 'Platformadagi barcha bo‘limlar va ularning o‘zaro bog‘liqligi');
 
-  // Real Navbar Screenshot at top
   addScreenshot(s, '02_navbar.png', 0.6, 1.45, 8.8, 1.0, '📸 Saytning haqiqiy Navbar komponenti');
 
   const navs = [
@@ -236,13 +235,9 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
   s.background = { color: C.bgLight };
   addHeader(s, '05', 'Kiberxavfsizlik bo‘limlari va o‘quv yo‘nalishlari', 'Saytda mavjud bo‘lgan kasbiy ta\'lim yo‘nalishlari va amaliy laboratoriya xonalari');
 
-  // Left: Paths screenshot
   addScreenshot(s, '03_paths.png', 0.6, 1.45, 4.25, 2.7, '📸 "Yo‘nalishlar" — Kibergigiyena, Web, Linux darslari');
-
-  // Right: Practice rooms screenshot
   addScreenshot(s, '11_practice_rooms.png', 5.15, 1.45, 4.25, 2.7, '📸 "Amaliyot" — CTF xonalari va zaiflik laboratoriyalari');
 
-  // Bottom explanation row
   s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
     x: 0.6, y: 4.45, w: 8.8, h: 0.85, r: 0.12,
     fill: { color: C.cardLight },
@@ -265,7 +260,6 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
   s.background = { color: C.bgLight };
   addHeader(s, '06', 'Amaliy imkoniyatlar: APK Qo‘riqchi va Telefon Paneli', 'Sayt ichidagi haqiqiy tahlil va himoya vositalari');
 
-  // Left: APK Qo'riqchi
   addScreenshot(s, '05_apk_qoriqchi.png', 0.6, 1.45, 4.25, 2.7, '📸 "APK Qo‘riqchi" — Android ilovalarni tahlil qilish moduli');
   s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
     x: 0.6, y: 4.45, w: 4.25, h: 0.85, r: 0.1,
@@ -280,7 +274,6 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
     fontSize: 9.5
   });
 
-  // Right: Security Phone
   addScreenshot(s, '06_security_phone.png', 5.15, 1.45, 4.25, 2.7, '📸 "Telefon Xavfsizlik Paneli" — qurilma auditi va 1-Click Fix');
   s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
     x: 5.15, y: 4.45, w: 4.25, h: 0.85, r: 0.1,
@@ -304,10 +297,8 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
   s.background = { color: C.bgLight };
   addHeader(s, '07', 'Sayt qanday ishlaydi? (Foydalanish oqimi)', 'Foydalanuvchi platformaga kirgandan so‘ng bilim olish va himoyalanish zanjiri');
 
-  // Real Screenshot of Lab Room
   addScreenshot(s, '09_lab_room.png', 0.6, 1.45, 4.6, 3.8, '📸 Haqiqiy virtual laboratoriya xonasi (Lab Room) interfeysi');
 
-  // 4 Steps on Right
   const steps = [
     { num: '01', title: 'Saytga kirish', desc: 'Brauzer orqali kiber-platformaga kirish va tilni tanlash.' },
     { num: '02', title: 'Yo‘nalishni tanlash', desc: 'Kibergigiyena, Web xavfsizlik yoki CTF kursini tanlash.' },
@@ -342,17 +333,88 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// 8. TEXNOLOGIYALAR (CyberGuard AI screenshot + Haqiqiy Stak)
+// 8. LOYIHANI KIM YARATDI? (MUALLIF: Abduraxmonov Bexruz)
+// ══════════════════════════════════════════════════════════════════════════════
+{
+  const s = pres.addSlide();
+  s.background = { color: '0A192F' }; // To'q ko'k kiber fon
+
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
+    x: 0.6, y: 0.35, w: 2.2, h: 0.3, r: 0.15,
+    fill: { color: '064E3B' },
+    line: { color: C.green, width: 1 }
+  });
+  s.addText('08 · MUALLIF', {
+    x: 0.6, y: 0.35, w: 2.2, h: 0.3,
+    fontSize: 10, bold: true, color: '34D399', align: 'center', valign: 'middle'
+  });
+
+  s.addText('Loyihani kim yaratdi?', {
+    x: 0.6, y: 0.75, w: 5.4, h: 0.5,
+    fontSize: 22, bold: true, color: C.white
+  });
+
+  s.addText('Loyihaning barcha qismlari Abduraxmonov Bexruz tomonidan bajarilgan.', {
+    x: 0.6, y: 1.25, w: 5.4, h: 0.9,
+    fontSize: 20, bold: true, color: C.textLight, lineSpacingMultiple: 1.15
+  });
+
+  s.addText('ROLI:  Muallif, dizayner va dasturchi', {
+    x: 0.6, y: 2.25, w: 5.4, h: 0.35,
+    fontSize: 12, bold: true, color: '6EE7B7'
+  });
+
+  const tasks = [
+    '• Loyiha g‘oyasi va arxitektura tuzilmasi',
+    '• UI/UX dizayn va vizual interfeys',
+    '• React, Vite va Tailwind CSS bilan dasturlash',
+    '• O‘quv modullari, laboratoriyalar va Sezar shifri',
+    '• Vercel bulutiga joylashtirish va CI/CD',
+    '• Sinov va taqdimotga to‘liq tayyorlash'
+  ];
+
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
+    x: 0.6, y: 2.7, w: 5.4, h: 2.45, r: 0.12,
+    fill: { color: '0F243A' },
+    line: { color: '1E3A52', width: 1.5 }
+  });
+  s.addText('Bajargan ishlari:', {
+    x: 0.8, y: 2.8, w: 5.0, h: 0.3,
+    fontSize: 12, bold: true, color: C.green
+  });
+  s.addText(tasks.join('\n'), {
+    x: 0.8, y: 3.15, w: 5.0, h: 1.9,
+    fontSize: 11, color: C.textLight, lineSpacingMultiple: 1.25
+  });
+
+  // Right Side: Author's Portrait Photo
+  const portraitImg = getImg('author_portrait.png');
+  const slideImg = getImg('author_slide.png');
+  const chosenImg = fs.existsSync(portraitImg) ? portraitImg : slideImg;
+
+  if (fs.existsSync(chosenImg)) {
+    s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
+      x: 6.35, y: 0.7, w: 3.1, h: 4.45, r: 0.15,
+      fill: { color: '0D1A26' },
+      line: { color: C.green, width: 2 }
+    });
+    s.addImage({
+      path: chosenImg,
+      x: 6.4, y: 0.75, w: 3.0, h: 4.35
+    });
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// 9. TEXNOLOGIYALAR (CyberGuard AI screenshot + Haqiqiy Stak)
 // ══════════════════════════════════════════════════════════════════════════════
 {
   const s = pres.addSlide();
   s.background = { color: C.bgLight };
-  addHeader(s, '08', 'Texnologiyalar: Loyihaning haqiqiy texnik asosi', 'Kod bazasi (package.json va arxitektura) orqali 100% tasdiqlangan texnologiyalar');
+  addHeader(s, '09', 'Texnologiyalar: Loyihaning haqiqiy texnik asosi', 'Kod bazasi (package.json va arxitektura) orqali 100% tasdiqlangan texnologiyalar');
 
-  // Left: CyberGuard AI real screenshot
   addScreenshot(s, '08_cyberguard_ai.png', 0.6, 1.45, 4.4, 3.8, '📸 CyberGuard AI — o‘zbek tilidagi kiberxavfsizlik assistenti');
 
-  // Right: Technology table
   const techs = [
     { name: 'React 18 & Vite', desc: 'Tezkor SPA arxitekturasi va modulli frontend.', col: C.cyanDark },
     { name: 'Tailwind CSS', desc: 'To‘liq moslashuvchan (responsive) qorong‘i kiber-interfeys.', col: C.greenDark },
@@ -379,17 +441,15 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// 9. AFZALLIKLARI (Leaderboard screenshot + 4 ta ustunlik)
+// 10. AFZALLIKLARI (Leaderboard screenshot + 4 ta ustunlik)
 // ══════════════════════════════════════════════════════════════════════════════
 {
   const s = pres.addSlide();
   s.background = { color: C.bgLight };
-  addHeader(s, '09', 'Afzalliklari: KiberQoriqchi nega ustun?', 'Saytning haqiqiy imkoniyatlariga asoslangan asosiy raqobat ustunliklari');
+  addHeader(s, '10', 'Afzalliklari: KiberQoriqchi nega ustun?', 'Saytning haqiqiy imkoniyatlariga asoslangan asosiy raqobat ustunliklari');
 
-  // Left: Leaderboard screenshot
   addScreenshot(s, '07_leaderboard.png', 0.6, 1.45, 4.4, 3.8, '📸 "Leaderboard" — jonli reyting va musobaqa tizimi');
 
-  // Right: 4 Advantages
   const advs = [
     { title: '1. 100% Ona Tilimizda', desc: 'O‘zbekiston to‘lov tizimlari (Click, Payme, Uzcard) kiber-xavflariga moslangan.' },
     { title: '2. Ta\'lim + Jonli Himoya', desc: 'Faqat ma\'ruza emas — smartfon va fayllarni amalda tekshirish qurollari bor.' },
@@ -416,17 +476,15 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// 10. KAMCHILIKLAR VA RIVOJLANTIRISH (Case Study screenshot + Rejalar)
+// 11. KAMCHILIKLAR VA RIVOJLANTIRISH (Case Study screenshot + Rejalar)
 // ══════════════════════════════════════════════════════════════════════════════
 {
   const s = pres.addSlide();
   s.background = { color: C.bgLight };
-  addHeader(s, '10', 'Kamchiliklar va Rivojlantirish Rejalari', 'Haqiqiy holatni ochiq baholash va kelajakdagi takomillashtirish bosqichlari');
+  addHeader(s, '11', 'Kamchiliklar va Rivojlantirish Rejalari', 'Haqiqiy holatni ochiq baholash va kelajakdagi takomillashtirish bosqichlari');
 
-  // Left: Case Study screenshot
-  addScreenshot(s, '12_casestudy.png', 0.6, 1.45, 4.4, 3.8, '📸 "Hodisalar Tahlili" (Case Study) — kiber-hujumlar tahlili');
+  addScreenshot(s, '12_casestudy.png', 0.6, 1.45, 4.4, 3.8, '📸 "Hodisalar Tahlili" (Case Study) — real kiber-hujumlar tahlili');
 
-  // Right: Kamchiliklar va Rejalar
   s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
     x: 5.3, y: 1.45, w: 4.1, h: 1.8, r: 0.12,
     fill: { color: C.cardLight },
@@ -471,17 +529,15 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// 11. XULOSA (Login screenshot + Natija)
+// 12. XULOSA (Login screenshot + Natija)
 // ══════════════════════════════════════════════════════════════════════════════
 {
   const s = pres.addSlide();
   s.background = { color: C.bgLight };
-  addHeader(s, '11', 'Xulosa: Loyiha natijasi va jamiyatga foydasi', 'Kiberxavfsizlik — faqat texnologiya emas, balki to‘g‘ri odatlar va amaliy bilimdir');
+  addHeader(s, '12', 'Xulosa: Loyiha natijasi va jamiyatga foydasi', 'Kiberxavfsizlik — faqat texnologiya emas, balki to‘g‘ri odatlar va amaliy bilimdir');
 
-  // Left: Login screenshot
   addScreenshot(s, '10_login.png', 0.6, 1.45, 4.4, 3.8, '📸 Ro‘yxatdan o‘tish va shaxsiy kabinet interfeysi');
 
-  // Right: 3 Big Metrics
   const metrics = [
     { num: '32M+', title: 'Aholi kiber-xavflardan himoyalanish madaniyatiga ega bo‘ladi.' },
     { num: '1-Click', title: 'Smartfon va APK xavfsizligini tekshirish uchun oson milliy yechim.' },
@@ -507,7 +563,7 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// 12. RAHMAT (Full Page Screenshot + Aloqa)
+// 13. RAHMAT (Full Page Screenshot + Aloqa)
 // ══════════════════════════════════════════════════════════════════════════════
 {
   const s = pres.addSlide();
@@ -533,8 +589,8 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
   s.addText([
     { text: '🌐 Jonli Sayt Havolasi:\n', options: { fontSize: 11, bold: true, color: C.green } },
     { text: 'https://kiber-xavfsizlik-boyicha-sayt.vercel.app/\n\n', options: { fontSize: 12, bold: true, color: C.cyan } },
-    { text: '📩 Aloqa va Hamkorlik:\n', options: { fontSize: 11, bold: true, color: C.green } },
-    { text: 'Telegram: @cybershield_uz  |  Email: contact@cybershield.uz\n\n', options: { fontSize: 10.5, color: C.textLight } },
+    { text: '👤 Loyiha Muallifi:\n', options: { fontSize: 11, bold: true, color: C.green } },
+    { text: 'Abduraxmonov Bexruz (Muallif, dizayner va dasturchi)\n\n', options: { fontSize: 10.5, color: C.textLight } },
     { text: '🛡️ "Xavfsiz internet — ongli foydalanuvchidan boshlanadi!"', options: { fontSize: 11, italic: true, color: '34D399' } }
   ], {
     x: 0.8, y: 2.1, w: 4.4, h: 2.7,

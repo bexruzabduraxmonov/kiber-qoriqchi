@@ -333,7 +333,130 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// 8. LOYIHANI KIM YARATDI? (MUALLIF: Abduraxmonov Bexruz)
+// 8. TEXNOLOGIYALAR (CyberGuard AI screenshot + Haqiqiy Stak)
+// ══════════════════════════════════════════════════════════════════════════════
+{
+  const s = pres.addSlide();
+  s.background = { color: C.bgLight };
+  addHeader(s, '08', 'Texnologiyalar: Loyihaning haqiqiy texnik asosi', 'Kod bazasi (package.json va arxitektura) orqali 100% tasdiqlangan texnologiyalar');
+
+  addScreenshot(s, '08_cyberguard_ai.png', 0.6, 1.45, 4.4, 3.8, '📸 CyberGuard AI — o‘zbek tilidagi kiberxavfsizlik assistenti');
+
+  const techs = [
+    { name: 'React 18 & Vite', desc: 'Tezkor SPA arxitekturasi va modulli frontend.', col: C.cyanDark },
+    { name: 'Tailwind CSS', desc: 'To‘liq moslashuvchan (responsive) qorong‘i kiber-interfeys.', col: C.greenDark },
+    { name: 'Lucide Icons & Confetti', desc: 'Kiber piktogrammalar va gamifikatsiya effektlari.', col: C.amber },
+    { name: 'Vercel Edge Cloud', desc: 'Global CDN, 24/7 uzluksiz ishlovchi bulutli serverlar.', col: C.textDark }
+  ];
+
+  techs.forEach((t, idx) => {
+    const yPos = 1.45 + idx * 0.95;
+    s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
+      x: 5.3, y: yPos, w: 4.1, h: 0.82, r: 0.1,
+      fill: { color: C.cardLight },
+      line: { color: C.border, width: 1 }
+    });
+    s.addText(t.name, {
+      x: 5.45, y: yPos + 0.08, w: 3.8, h: 0.3,
+      fontSize: 12, bold: true, color: t.col
+    });
+    s.addText(t.desc, {
+      x: 5.45, y: yPos + 0.38, w: 3.8, h: 0.38,
+      fontSize: 9.5, color: C.textMuted
+    });
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// 9. AFZALLIKLARI (Leaderboard screenshot + 4 ta ustunlik)
+// ══════════════════════════════════════════════════════════════════════════════
+{
+  const s = pres.addSlide();
+  s.background = { color: C.bgLight };
+  addHeader(s, '09', 'Afzalliklari: KiberQoriqchi nega ustun?', 'Saytning haqiqiy imkoniyatlariga asoslangan asosiy raqobat ustunliklari');
+
+  addScreenshot(s, '07_leaderboard.png', 0.6, 1.45, 4.4, 3.8, '📸 "Leaderboard" — jonli reyting va musobaqa tizimi');
+
+  const advs = [
+    { title: '1. 100% Ona Tilimizda', desc: 'O‘zbekiston to‘lov tizimlari (Click, Payme, Uzcard) kiber-xavflariga moslangan.' },
+    { title: '2. Ta\'lim + Jonli Himoya', desc: 'Faqat ma\'ruza emas — smartfon va fayllarni amalda tekshirish qurollari bor.' },
+    { title: '3. Gamifikatsiya va Musobaqa', desc: 'Topshiriqlarni bajarish orqali ballar to‘plab umumiy reytingda ko‘tarilish.' },
+    { title: '4. CyberGuard AI Maslahatchi', desc: 'Har qanday kiber-savolga o‘zbek tilida 24/7 tezkor va tushunarli javob.' }
+  ];
+
+  advs.forEach((a, idx) => {
+    const yPos = 1.45 + idx * 0.95;
+    s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
+      x: 5.3, y: yPos, w: 4.1, h: 0.82, r: 0.1,
+      fill: { color: C.cardLight },
+      line: { color: C.greenBorder, width: 1.5 }
+    });
+    s.addText(a.title, {
+      x: 5.45, y: yPos + 0.08, w: 3.8, h: 0.3,
+      fontSize: 11, bold: true, color: C.greenDark
+    });
+    s.addText(a.desc, {
+      x: 5.45, y: yPos + 0.38, w: 3.8, h: 0.38,
+      fontSize: 9.5, color: C.textMuted
+    });
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// 10. KAMCHILIKLAR VA RIVOJLANTIRISH (Case Study screenshot + Rejalar)
+// ══════════════════════════════════════════════════════════════════════════════
+{
+  const s = pres.addSlide();
+  s.background = { color: C.bgLight };
+  addHeader(s, '10', 'Kamchiliklar va Rivojlantirish Rejalari', 'Haqiqiy holatni ochiq baholash va kelajakdagi takomillashtirish bosqichlari');
+
+  addScreenshot(s, '12_casestudy.png', 0.6, 1.45, 4.4, 3.8, '📸 "Hodisalar Tahlili" (Case Study) — real kiber-hujumlar tahlili');
+
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
+    x: 5.3, y: 1.45, w: 4.1, h: 1.8, r: 0.12,
+    fill: { color: C.cardLight },
+    line: { color: 'FCD34D', width: 1.5 }
+  });
+  s.addText('⚠️ Aniqlangan Kamchiliklar (MVP):', {
+    x: 5.45, y: 1.55, w: 3.8, h: 0.3,
+    fontSize: 11, bold: true, color: 'B45309'
+  });
+  s.addText([
+    { text: '• Dinamik Server Sandboxing: ', options: { bold: true, color: C.textDark } },
+    { text: 'Hozircha veb-simulyatsiya; to‘liq Docker muhiti zarur.\n', options: { color: C.textMuted } },
+    { text: '• Mahalliy ilova yo‘qligi: ', options: { bold: true, color: C.textDark } },
+    { text: 'Android/iOS ilovasi ishlab chiqilmoqda.\n', options: { color: C.textMuted } },
+    { text: '• Telegram bot: ', options: { bold: true, color: C.textDark } },
+    { text: 'Avtomatik APK tekshiruvchi bot ulanmoqda.', options: { color: C.textMuted } }
+  ], {
+    x: 5.45, y: 1.9, w: 3.8, h: 1.25,
+    fontSize: 9
+  });
+
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
+    x: 5.3, y: 3.45, w: 4.1, h: 1.8, r: 0.12,
+    fill: { color: C.cardLight },
+    line: { color: C.greenBorder, width: 1.5 }
+  });
+  s.addText('🚀 Kelajakdagi Rivojlantirish:', {
+    x: 5.45, y: 3.55, w: 3.8, h: 0.3,
+    fontSize: 11, bold: true, color: C.greenDark
+  });
+  s.addText([
+    { text: '• Telegram Xavfsizlik Boti: ', options: { bold: true, color: C.textDark } },
+    { text: 'Shubhali faylni botga yuborib 2 soniyada natija olish.\n', options: { color: C.textMuted } },
+    { text: '• B2B Korporativ Audit: ', options: { bold: true, color: C.textDark } },
+    { text: 'Banklar va korxonalar uchun fishing simulyatsiyasi.\n', options: { color: C.textMuted } },
+    { text: '• Respublika CTF Musobaqasi: ', options: { bold: true, color: C.textDark } },
+    { text: 'Yoshlar o‘rtasida kiber-olimpiada o‘tkazish.', options: { color: C.textMuted } }
+  ], {
+    x: 5.45, y: 3.9, w: 3.8, h: 1.25,
+    fontSize: 9
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// 11. LOYIHANI KIM YARATDI? (MUALLIF: Abduraxmonov Bexruz — OXIRIDA)
 // ══════════════════════════════════════════════════════════════════════════════
 {
   const s = pres.addSlide();
@@ -344,7 +467,7 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
     fill: { color: '064E3B' },
     line: { color: C.green, width: 1 }
   });
-  s.addText('08 · MUALLIF', {
+  s.addText('11 · MUALLIF', {
     x: 0.6, y: 0.35, w: 2.2, h: 0.3,
     fontSize: 10, bold: true, color: '34D399', align: 'center', valign: 'middle'
   });
@@ -403,129 +526,6 @@ function addScreenshot(slide, imgName, x, y, w, h, captionText = null) {
       x: 6.4, y: 0.75, w: 3.0, h: 4.35
     });
   }
-}
-
-// ══════════════════════════════════════════════════════════════════════════════
-// 9. TEXNOLOGIYALAR (CyberGuard AI screenshot + Haqiqiy Stak)
-// ══════════════════════════════════════════════════════════════════════════════
-{
-  const s = pres.addSlide();
-  s.background = { color: C.bgLight };
-  addHeader(s, '09', 'Texnologiyalar: Loyihaning haqiqiy texnik asosi', 'Kod bazasi (package.json va arxitektura) orqali 100% tasdiqlangan texnologiyalar');
-
-  addScreenshot(s, '08_cyberguard_ai.png', 0.6, 1.45, 4.4, 3.8, '📸 CyberGuard AI — o‘zbek tilidagi kiberxavfsizlik assistenti');
-
-  const techs = [
-    { name: 'React 18 & Vite', desc: 'Tezkor SPA arxitekturasi va modulli frontend.', col: C.cyanDark },
-    { name: 'Tailwind CSS', desc: 'To‘liq moslashuvchan (responsive) qorong‘i kiber-interfeys.', col: C.greenDark },
-    { name: 'Lucide Icons & Confetti', desc: 'Kiber piktogrammalar va gamifikatsiya effektlari.', col: C.amber },
-    { name: 'Vercel Edge Cloud', desc: 'Global CDN, 24/7 uzluksiz ishlovchi bulutli serverlar.', col: C.textDark }
-  ];
-
-  techs.forEach((t, idx) => {
-    const yPos = 1.45 + idx * 0.95;
-    s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
-      x: 5.3, y: yPos, w: 4.1, h: 0.82, r: 0.1,
-      fill: { color: C.cardLight },
-      line: { color: C.border, width: 1 }
-    });
-    s.addText(t.name, {
-      x: 5.45, y: yPos + 0.08, w: 3.8, h: 0.3,
-      fontSize: 12, bold: true, color: t.col
-    });
-    s.addText(t.desc, {
-      x: 5.45, y: yPos + 0.38, w: 3.8, h: 0.38,
-      fontSize: 9.5, color: C.textMuted
-    });
-  });
-}
-
-// ══════════════════════════════════════════════════════════════════════════════
-// 10. AFZALLIKLARI (Leaderboard screenshot + 4 ta ustunlik)
-// ══════════════════════════════════════════════════════════════════════════════
-{
-  const s = pres.addSlide();
-  s.background = { color: C.bgLight };
-  addHeader(s, '10', 'Afzalliklari: KiberQoriqchi nega ustun?', 'Saytning haqiqiy imkoniyatlariga asoslangan asosiy raqobat ustunliklari');
-
-  addScreenshot(s, '07_leaderboard.png', 0.6, 1.45, 4.4, 3.8, '📸 "Leaderboard" — jonli reyting va musobaqa tizimi');
-
-  const advs = [
-    { title: '1. 100% Ona Tilimizda', desc: 'O‘zbekiston to‘lov tizimlari (Click, Payme, Uzcard) kiber-xavflariga moslangan.' },
-    { title: '2. Ta\'lim + Jonli Himoya', desc: 'Faqat ma\'ruza emas — smartfon va fayllarni amalda tekshirish qurollari bor.' },
-    { title: '3. Gamifikatsiya va Musobaqa', desc: 'Topshiriqlarni bajarish orqali ballar to‘plab umumiy reytingda ko‘tarilish.' },
-    { title: '4. CyberGuard AI Maslahatchi', desc: 'Har qanday kiber-savolga o‘zbek tilida 24/7 tezkor va tushunarli javob.' }
-  ];
-
-  advs.forEach((a, idx) => {
-    const yPos = 1.45 + idx * 0.95;
-    s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
-      x: 5.3, y: yPos, w: 4.1, h: 0.82, r: 0.1,
-      fill: { color: C.cardLight },
-      line: { color: C.greenBorder, width: 1.5 }
-    });
-    s.addText(a.title, {
-      x: 5.45, y: yPos + 0.08, w: 3.8, h: 0.3,
-      fontSize: 11, bold: true, color: C.greenDark
-    });
-    s.addText(a.desc, {
-      x: 5.45, y: yPos + 0.38, w: 3.8, h: 0.38,
-      fontSize: 9.5, color: C.textMuted
-    });
-  });
-}
-
-// ══════════════════════════════════════════════════════════════════════════════
-// 11. KAMCHILIKLAR VA RIVOJLANTIRISH (Case Study screenshot + Rejalar)
-// ══════════════════════════════════════════════════════════════════════════════
-{
-  const s = pres.addSlide();
-  s.background = { color: C.bgLight };
-  addHeader(s, '11', 'Kamchiliklar va Rivojlantirish Rejalari', 'Haqiqiy holatni ochiq baholash va kelajakdagi takomillashtirish bosqichlari');
-
-  addScreenshot(s, '12_casestudy.png', 0.6, 1.45, 4.4, 3.8, '📸 "Hodisalar Tahlili" (Case Study) — real kiber-hujumlar tahlili');
-
-  s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
-    x: 5.3, y: 1.45, w: 4.1, h: 1.8, r: 0.12,
-    fill: { color: C.cardLight },
-    line: { color: 'FCD34D', width: 1.5 }
-  });
-  s.addText('⚠️ Aniqlangan Kamchiliklar (MVP):', {
-    x: 5.45, y: 1.55, w: 3.8, h: 0.3,
-    fontSize: 11, bold: true, color: 'B45309'
-  });
-  s.addText([
-    { text: '• Dinamik Server Sandboxing: ', options: { bold: true, color: C.textDark } },
-    { text: 'Hozircha veb-simulyatsiya; to‘liq Docker muhiti zarur.\n', options: { color: C.textMuted } },
-    { text: '• Mahalliy ilova yo‘qligi: ', options: { bold: true, color: C.textDark } },
-    { text: 'Android/iOS ilovasi ishlab chiqilmoqda.\n', options: { color: C.textMuted } },
-    { text: '• Telegram bot: ', options: { bold: true, color: C.textDark } },
-    { text: 'Avtomatik APK tekshiruvchi bot ulanmoqda.', options: { color: C.textMuted } }
-  ], {
-    x: 5.45, y: 1.9, w: 3.8, h: 1.25,
-    fontSize: 9
-  });
-
-  s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
-    x: 5.3, y: 3.45, w: 4.1, h: 1.8, r: 0.12,
-    fill: { color: C.cardLight },
-    line: { color: C.greenBorder, width: 1.5 }
-  });
-  s.addText('🚀 Kelajakdagi Rivojlantirish:', {
-    x: 5.45, y: 3.55, w: 3.8, h: 0.3,
-    fontSize: 11, bold: true, color: C.greenDark
-  });
-  s.addText([
-    { text: '• Telegram Xavfsizlik Boti: ', options: { bold: true, color: C.textDark } },
-    { text: 'Shubhali faylni botga yuborib 2 soniyada natija olish.\n', options: { color: C.textMuted } },
-    { text: '• B2B Korporativ Audit: ', options: { bold: true, color: C.textDark } },
-    { text: 'Banklar va korxonalar uchun fishing simulyatsiyasi.\n', options: { color: C.textMuted } },
-    { text: '• Respublika CTF Musobaqasi: ', options: { bold: true, color: C.textDark } },
-    { text: 'Yoshlar o‘rtasida kiber-olimpiada o‘tkazish.', options: { color: C.textMuted } }
-  ], {
-    x: 5.45, y: 3.9, w: 3.8, h: 1.25,
-    fontSize: 9
-  });
 }
 
 // ══════════════════════════════════════════════════════════════════════════════

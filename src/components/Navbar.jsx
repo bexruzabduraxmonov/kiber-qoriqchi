@@ -2,11 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { useUser } from '../context/UserContext';
+import { usePwa } from '../context/PwaContext';
 import { Logo } from './Logo';
 
 export const Navbar = ({ currentPage, onNavigate }) => {
   const { language, setLanguage, t } = useLanguage();
   const { isLoggedIn, userName, logout } = useUser();
+  const { installApp, isInstalled } = usePwa();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -80,6 +82,25 @@ export const Navbar = ({ currentPage, onNavigate }) => {
         </div>
 
         <div className="min-h-0 flex-1 overflow-y-auto bg-[#071d28] px-4 py-4">
+          {/* Mobile Install App Button */}
+          {!isInstalled && (
+            <button
+              type="button"
+              onClick={() => { setMobileMenuOpen(false); installApp(); }}
+              className="w-full mb-3 flex items-center justify-between rounded-xl border border-[#88cc14]/40 bg-gradient-to-r from-[#112416] to-[#0c1d1d] p-3 text-left font-bold text-[#88cc14] shadow-[0_0_15px_rgba(136,204,20,0.15)] active:scale-[0.98] transition-all"
+            >
+              <span className="flex items-center gap-2.5">
+                <i className="fa-solid fa-mobile-screen-button text-base text-[#88cc14]"></i>
+                <span className="text-sm">
+                  {language === 'ru' ? 'Установить на телефон' : language === 'en' ? 'Install App' : "Telefonga o'rnatish"}
+                </span>
+              </span>
+              <span className="rounded bg-[#88cc14] text-[#071821] px-2 py-0.5 text-[9px] font-black uppercase tracking-wider">
+                PWA
+              </span>
+            </button>
+          )}
+
           <div className="flex flex-col gap-2">
             {[
               { label: t('nav_home'), page: 'home' },
@@ -297,6 +318,19 @@ export const Navbar = ({ currentPage, onNavigate }) => {
               </ul>
             )}
           </div>
+
+          {/* Desktop Install App Button */}
+          {!isInstalled && (
+            <button
+              type="button"
+              onClick={installApp}
+              className="hidden lg:flex items-center gap-1.5 rounded-xl border border-[#88cc14]/40 bg-[#131e2b] px-3 py-2 text-xs font-bold text-[#88cc14] hover:bg-[#88cc14]/15 hover:border-[#88cc14] hover:shadow-[0_0_12px_rgba(136,204,20,0.25)] transition-all"
+              title={language === 'ru' ? 'Установить на телефон или ПК' : language === 'en' ? 'Install App' : "Ilovani o'rnatish"}
+            >
+              <i className="fa-solid fa-mobile-screen-button text-xs text-[#88cc14]"></i>
+              <span>{language === 'ru' ? 'Приложение' : language === 'en' ? 'App' : "Ilova"}</span>
+            </button>
+          )}
 
           <div className="h-5 w-px bg-[#2d3d4f]"></div>
 

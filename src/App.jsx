@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
 import { UserProvider } from './context/UserContext';
+import { PwaProvider } from './context/PwaContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { InstallModal } from './components/InstallModal';
+import { InstallBanner } from './components/InstallBanner';
 
 // Pages
 import { HomePage } from './pages/HomePage';
@@ -91,6 +94,8 @@ function MainApp() {
       </main>
 
       <Footer onNavigate={navigate} />
+      <InstallBanner />
+      <InstallModal />
     </div>
   );
 }
@@ -99,7 +104,9 @@ export function App() {
   return (
     <LanguageProvider>
       <UserProvider>
-        <MainApp />
+        <PwaProvider>
+          <MainApp />
+        </PwaProvider>
       </UserProvider>
     </LanguageProvider>
   );

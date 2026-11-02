@@ -578,3 +578,26 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
   border: 1px solid var(--green);
   box-shadow: 0 0 0 1px var(--green), inset 0 0 15px rgba(136,204,20,0.05);
 }
+
+/* PWA and Mobile optimizations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Mobile safe area handling */
+@supports (padding: max(0px)) {
+  body {
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+}

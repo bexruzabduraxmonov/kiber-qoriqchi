@@ -1,9 +1,11 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { usePwa } from '../context/PwaContext';
 import { Logo } from './Logo';
 
 export const Footer = ({ onNavigate }) => {
   const { language, t } = useLanguage();
+  const { installApp, isInstalled } = usePwa();
 
   return (
     <footer className="bg-[#0b1219] border-t border-[#2d3d4f] px-5 py-12 sm:px-8 mt-auto">
@@ -19,16 +21,31 @@ export const Footer = ({ onNavigate }) => {
                 ? "Платформа для изучения кибербезопасности через виртуальные лаборатории и практические CTF."
                 : "Learn cybersecurity through interactive virtual labs and practical CTF challenges."}
             </p>
-            {/* Domain Link Badge */}
-            <a
-              href="https://cybershield.uz"
-              onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#1a232c] border border-[#88cc14]/30 text-xs font-mono text-[#88cc14] hover:border-[#88cc14] transition-all group"
-            >
-              <i className="fa-solid fa-globe text-xs group-hover:rotate-12 transition-transform" />
-              <span>https://cybershield.uz</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#88cc14] animate-pulse" />
-            </a>
+            <div className="flex flex-wrap items-center gap-2">
+              {/* Domain Link Badge */}
+              <a
+                href="https://cybershield.uz"
+                onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#1a232c] border border-[#88cc14]/30 text-xs font-mono text-[#88cc14] hover:border-[#88cc14] transition-all group"
+              >
+                <i className="fa-solid fa-globe text-xs group-hover:rotate-12 transition-transform" />
+                <span>https://cybershield.uz</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#88cc14] animate-pulse" />
+              </a>
+
+              {/* Install PWA Button */}
+              {!isInstalled && (
+                <button
+                  type="button"
+                  onClick={installApp}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#122416] border border-[#88cc14]/40 text-xs font-mono text-[#88cc14] hover:border-[#88cc14] hover:bg-[#16331d] transition-all"
+                  title="Telefonga yoki kompyuterga o'rnatish"
+                >
+                  <i className="fa-solid fa-mobile-screen-button text-xs" />
+                  <span>{language === 'ru' ? 'Скачать приложение' : language === 'en' ? 'Install App' : "Ilovani o'rnatish"}</span>
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Quick Links Grid */}
@@ -81,7 +98,7 @@ export const Footer = ({ onNavigate }) => {
 
             <div>
               <h5 className="text-white font-bold text-xs uppercase tracking-wider mb-3 text-[#0ea5e9]">
-                {language === 'uz' ? "Akkaunt" : language === 'ru' ? "Аккаунт" : "Account"}
+                {language === 'uz' ? "Akkaunt & Ilova" : language === 'ru' ? "Аккаунт и Приложение" : "Account & App"}
               </h5>
               <ul className="space-y-2 text-[#94a3b8]">
                 <li>
@@ -92,6 +109,12 @@ export const Footer = ({ onNavigate }) => {
                 <li>
                   <button type="button" onClick={() => onNavigate('login')} className="hover:text-[#88cc14] transition-colors">
                     {t('nav_login')}
+                  </button>
+                </li>
+                <li>
+                  <button type="button" onClick={installApp} className="text-[#88cc14] hover:underline flex items-center gap-1.5">
+                    <i className="fa-solid fa-download text-[11px]"></i>
+                    <span>{language === 'ru' ? 'Установить PWA' : language === 'en' ? 'Install PWA' : "Ilovani o'rnatish"}</span>
                   </button>
                 </li>
               </ul>

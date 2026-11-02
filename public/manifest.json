@@ -1,18 +1,70 @@
 {
-  "name": "CyberShield | Kiberxavfsizlik Akademiyasi",
-  "short_name": "CyberShield",
-  "description": "Virtual laboratoriyalar, CTF amaliyotlari va APK xavfsizlik monitoringi",
+  "id": "/?source=pwa",
+  "name": "KiberQo'riqchi — Kiberxavfsizlik Platformasi",
+  "short_name": "KiberQo'riqchi",
+  "description": "Virtual laboratoriyalar, CTF amaliyotlari va kiberxavfsizlik monitoringi",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "orientation": "portrait",
+  "orientation": "portrait-primary",
   "background_color": "#0d151c",
   "theme_color": "#0d151c",
+  "categories": ["education", "security", "utilities"],
+  "lang": "uz",
+  "dir": "ltr",
+  "prefer_related_applications": false,
   "icons": [
     {
-      "src": "/logo.png",
-      "sizes": "192x192 512x512 1024x1024",
+      "src": "/icon-192.png",
+      "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "CTF & Laboratoriyalar",
+      "short_name": "Laboratoriya",
+      "description": "Amaliy kiberxavfsizlik laboratoriyalari",
+      "url": "/#practice",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Telefon Himoyasi (Audit)",
+      "short_name": "Telefon Audit",
+      "description": "Mobil qurilma xavfsizlik diagnostikasi",
+      "url": "/#phone-scan",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Reyting Jadvali",
+      "short_name": "Reyting",
+      "description": "Eng kuchli xakerlar reytingi",
+      "url": "/#leaderboard",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }

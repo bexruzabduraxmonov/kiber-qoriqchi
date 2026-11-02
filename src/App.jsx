@@ -4,6 +4,7 @@ import { UserProvider } from './context/UserContext';
 import { PwaProvider } from './context/PwaContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { MobileBottomNav } from './components/MobileBottomNav';
 import { InstallModal } from './components/InstallModal';
 import { InstallBanner } from './components/InstallBanner';
 
@@ -78,7 +79,7 @@ function MainApp() {
     <div className="min-h-screen flex flex-col bg-[#0d151c] text-white selection:bg-[#0ea5e9] selection:text-black">
       <Navbar currentPage={currentPage} onNavigate={navigate} />
 
-      <main className="flex-1">
+      <main className="flex-1 pb-16 lg:pb-0">
         {currentPage === 'home' && <HomePage onNavigate={navigate} />}
         {currentPage === 'paths' && <PathsPage onNavigate={navigate} />}
         {currentPage === 'practice' && <PracticePage onSelectRoom={handleSelectRoom} />}
@@ -94,6 +95,7 @@ function MainApp() {
       </main>
 
       <Footer onNavigate={navigate} />
+      <MobileBottomNav currentPage={currentPage} onNavigate={navigate} onSelectRoom={handleSelectRoom} />
       <InstallBanner />
       <InstallModal />
     </div>

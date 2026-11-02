@@ -9,7 +9,7 @@ export const InstallBanner = () => {
   if (!showInstallBanner || isInstalled) return null;
 
   return (
-    <div className="fixed bottom-3 inset-x-3 sm:left-auto sm:right-5 sm:max-w-sm z-50 animate-slideUp">
+    <div className="fixed bottom-[72px] sm:bottom-4 inset-x-3 sm:left-auto sm:right-5 sm:max-w-sm z-40 animate-slideUp">
       <div className="flex items-center justify-between gap-3 p-3.5 rounded-2xl bg-[#0d1620]/95 backdrop-blur-md border border-[#88cc14]/40 shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
         {/* App Logo */}
         <div className="flex items-center gap-3 min-w-0">
